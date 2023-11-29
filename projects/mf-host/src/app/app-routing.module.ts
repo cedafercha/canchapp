@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('mfUser/UserComponent').then( (m) => m.UserComponent)
-  },
-  {
-    path: '',
-    loadChildren: () => import('mfDashBoard/BoardtestComponent').then( (m) => m.BoardtestComponent)
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
+  { 
+    path: 'board', 
+    //loadChildren: () => import('mfDashBoard/BoardModule').then((m) => m.BoardModule)
+    loadChildren: () => 
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4202/remoteEntry.js',
+        exposedModule: './BoardModule'
+      })
+      .then(m => m.BoardModule)
+    
   }
 ];
 

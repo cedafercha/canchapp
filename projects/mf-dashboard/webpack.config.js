@@ -5,7 +5,7 @@ module.exports = withModuleFederationPlugin({
   name: 'mfDashBoard',
 
   exposes: {
-    './BoardtestComponent': './projects/mf-dashboard/src/app/boardtest/boardtest.component.ts',
+    './BoardModule': './projects/mf-dashboard/src/app/board/board.module.ts',
   },
 
   shared: {
