@@ -1,0 +1,22 @@
+ng generate application mf-host --routing=true --style=scss --standalone=false --force=true
+ng generate application mf-user --routing=true --style=scss --standalone=false --force=true
+
+
+https://www.youtube.com/watch?v=12x2QpDCsfk
+
+
+caleño
+https://www.youtube.com/watch?v=PnzI3GGozLA
+
+arq. limpia
+https://www.youtube.com/watch?v=g5z_8ecIic0
+
+india
+https://www.youtube.com/watch?v=YEHo0kJrYQU&list=PL1UWPWOy5UlfLWfSstHBW-iVu6RWJtrG-&index=3
+
+
+
+
+Tutorial Modulo Federacion
+https://github.com/angular-architects/module-federation-plugin/blob/main/libs/mf/README.md
+https://github.com/angular-architects/module-federation-plugin/blob/main/libs/mf/tutorial/tutorial.md

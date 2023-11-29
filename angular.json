@@ -39,9 +39,6 @@
 							"projects/mf-host/src/styles.scss"
 						],
 						"scripts": [],
-						"ssr": {
-							"entry": "projects/mf-host/server.ts"
-						},
 						"main": "projects/mf-host/src/main.ts",
 						"extraWebpackConfig": "projects/mf-host/webpack.config.js",
 						"commonChunk": false
@@ -153,9 +150,6 @@
 							"projects/mf-user/src/styles.scss"
 						],
 						"scripts": [],
-						"ssr": {
-							"entry": "projects/mf-user/server.ts"
-						},
 						"main": "projects/mf-user/src/main.ts",
 						"extraWebpackConfig": "projects/mf-user/webpack.config.js",
 						"commonChunk": false
@@ -250,11 +244,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mf-dashboard",
 						"index": "projects/mf-dashboard/src/index.html",
-						"browser": "projects/mf-dashboard/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -268,11 +261,9 @@
 							"projects/mf-dashboard/src/styles.scss"
 						],
 						"scripts": [],
-						"server": "projects/mf-dashboard/src/main.server.ts",
-						"prerender": true,
-						"ssr": {
-							"entry": "projects/mf-dashboard/server.ts"
-						}
+						"main": "projects/mf-dashboard/src/main.ts",
+						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -288,7 +279,8 @@
 									"maximumError": "4kb"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mf-dashboard/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -299,21 +291,28 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "mf-dashboard:build:production"
+							"buildTarget": "mf-dashboard:build:production",
+							"extraWebpackConfig": "projects/mf-dashboard/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "mf-dashboard:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4202,
+						"publicHost": "http://localhost:4202",
+						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"builder": "ngx-build-plus:extract-i18n",
 					"options": {
-						"buildTarget": "mf-dashboard:build"
+						"buildTarget": "mf-dashboard:build",
+						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js"
 					}
 				},
 				"test": {
