@@ -10,7 +10,8 @@
     "serve:ssr:mf-host": "node dist/mf-host/server/server.mjs",
     "serve:ssr:mf-user": "node dist/mf-user/server/server.mjs",
     "serve:ssr:mf-dashboard": "node dist/mf-dashboard/server/server.mjs",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "serve:ssr:mf-company": "node dist/mf-company/server/server.mjs"
   },
   "private": true,
   "dependencies": {
