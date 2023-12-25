@@ -17,6 +17,18 @@ const routes: Routes = [
       })
       .then(m => m.BoardModule)
     
+  },
+  { 
+    path: 'company', 
+    //loadChildren: () => import('mfDashBoard/BoardModule').then((m) => m.BoardModule)
+    loadChildren: () => 
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4203/remoteEntry.js',
+        exposedModule: './CompanyModule'
+      })
+      .then(m => m.CompanyModule)
+    
   }
 ];
 
