@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CompanyComponent } from './company/company.component';
+import { CompanyPageComponent } from './page/company/company.page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'company', pathMatch: 'full'},
-  {path: 'company', component: CompanyComponent }
+  {path: 'company', component: CompanyPageComponent }
 ];
 
 @NgModule({
