@@ -370,6 +370,7 @@
 			}
 		},
 		"mf-company": {
+			"projectType": "application",
 			"root": "projects/mf-company",
 			"sourceRoot": "projects/mf-company/src",
 			"prefix": "app",

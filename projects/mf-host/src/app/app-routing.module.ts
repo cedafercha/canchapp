@@ -7,8 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { 
-    path: 'board', 
-    //loadChildren: () => import('mfDashBoard/BoardModule').then((m) => m.BoardModule)
+    path: 'board',
     loadChildren: () => 
       loadRemoteModule({
         type: 'module',
@@ -19,8 +18,7 @@ const routes: Routes = [
     
   },
   { 
-    path: 'company', 
-    //loadChildren: () => import('mfDashBoard/BoardModule').then((m) => m.BoardModule)
+    path: 'company',
     loadChildren: () => 
       loadRemoteModule({
         type: 'module',
