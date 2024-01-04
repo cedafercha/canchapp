@@ -12,7 +12,6 @@ import { CompanyDataComponent } from '../../components/company-data/company-data
 export class CompanyPageComponent {
 
   constructor() {
-    console.log('page company');
   }
 
 }

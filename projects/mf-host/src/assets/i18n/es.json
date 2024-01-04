@@ -1,3 +1,17 @@
 {
-    "test": "Prueba"
+    "company":"Empresa",
+    "userAdmin":"Usuario administrador",
+    "User":"Usuario",
+    "name":"Nombre",
+    "identification":"Identificación",
+    "username":"Usuario",
+    "password":"Clave",
+    "email":"Correo",
+    "addres":"Dirección",
+    "country":"Pais",
+    "city":"Ciudad",
+    "state":"Estado",
+    "errorEmail":"El formato del correo es incorrecto.",
+    "errorRequired":"El campo es obligatorio.",
+    "save":"Guardar"
 }

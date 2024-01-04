@@ -1,1 +1,55 @@
-<p>company-data works!</p>
+<form class="row g-3" [formGroup]="formCompany" (ngSubmit)="onSave()">
+    <div class="col-md-6">
+      <label for="email" class="form-label">{{ 'email' | translate }}</label>
+      <input type="email" class="form-control" id="email" formControlName="email" />
+      <div class="invalid-feedback" *ngIf="formCompany.controls['email']?.errors?.['required']">
+        {{ 'errorRequired' | translate }}
+      </div>
+      <div class="invalid-feedback" *ngIf="formCompany.controls['email']?.errors?.['email']">
+        {{ 'errorEmail' | translate }}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="password" class="form-label">{{ 'password' | translate }}</label>
+      <input type="password" class="form-control" id="password" formControlName="password" />
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+    <div class="col-12">
+        <label for="name" class="form-label">{{ 'name' | translate }}</label>
+        <input type="text" class="form-control" id="name">
+    </div>
+    <div class="col-md-6">
+        <label for="identification" class="form-label">{{ 'identification' | translate }}</label>
+        <input type="text" class="form-control" id="identification">
+      </div>
+    <div class="col-md-6">
+      <label for="addres" class="form-label">{{ 'addres' | translate }}</label>
+      <input type="text" class="form-control" id="addres">
+    </div>
+    <div class="col-md-4">
+      <label for="country" class="form-label">{{ 'country' | translate }}</label>
+      <select id="country" class="form-select">
+        <option selected>Seleccionar...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="state" class="form-label">{{ 'state' | translate }}</label>
+      <select id="state" class="form-select">
+        <option selected>Seleccionar...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+        <label for="city" class="form-label">{{ 'city' | translate }}</label>
+        <select id="city" class="form-select">
+          <option selected>Seleccionar...</option>
+          <option>...</option>
+        </select>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">{{ 'save' | translate }}</button>
+    </div>
+  </form>

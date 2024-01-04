@@ -1,3 +1,17 @@
 {
-    "test": "Test"
+    "company":"Company",
+    "userAdmin":"Admin",
+    "user":"User",
+    "name":"name",
+    "identification":"identification",
+    "username":"login",
+    "password":"password",
+    "email":"Email",
+    "addres":"Addres",
+    "country":"Country",
+    "city":"City",
+    "state":"State",
+    "errorEmail":"The email format is incorrect.",
+    "errorRequired":"The field is required.",
+    "save":"Save" 
 }

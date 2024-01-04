@@ -5,7 +5,7 @@ import { ListCompanyPageComponent } from './page/list-company.page/list-company.
 
 const routes: Routes = [
   {path: '', redirectTo: 'company', pathMatch: 'full'},
-  {path: 'company', component: CompanyPageComponent },
+  {path: 'company/:id', component: CompanyPageComponent },
   {path: 'list', component: ListCompanyPageComponent }
 ];
 
