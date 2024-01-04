@@ -1,13 +1,13 @@
 <table class="table table-hover">
     <thead class="table-light">
       <tr>
-        <th scope="col">'Company'</th>
-        <th scope="col"> {{ 'userAdmin' | translate }}</th>
+        <th scope="col">{{ 'company' | translate }}</th>
+        <th scope="col">{{ 'userAdmin' | translate }}</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Empresa 1</td>
+        <td><a class="nav-link" [routerLink]='["/company/company/1"]'>Empresa 1</a></td>
         <td>Admin 1</td>
       </tr>
       <tr>
