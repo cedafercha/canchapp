@@ -18,15 +18,24 @@
     </div>
     <div class="col-12">
         <label for="name" class="form-label">{{ 'name' | translate }}</label>
-        <input type="text" class="form-control" id="name">
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <div class="invalid-feedback" *ngIf="formCompany.controls['name']?.errors?.['required']">
+          {{ 'errorRequired' | translate }}
+        </div>
     </div>
     <div class="col-md-6">
         <label for="identification" class="form-label">{{ 'identification' | translate }}</label>
-        <input type="text" class="form-control" id="identification">
+        <input type="text" class="form-control" id="identification" formControlName="identification">
+        <div class="invalid-feedback" *ngIf="formCompany.controls['identification']?.errors?.['required']">
+          {{ 'errorRequired' | translate }}
+        </div>
       </div>
     <div class="col-md-6">
       <label for="addres" class="form-label">{{ 'addres' | translate }}</label>
-      <input type="text" class="form-control" id="addres">
+      <input type="text" class="form-control" id="address" formControlName="address">
+      <div class="invalid-feedback" *ngIf="formCompany.controls['address']?.errors?.['required']">
+        {{ 'errorRequired' | translate }}
+      </div>
     </div>
     <div class="col-md-4">
       <label for="country" class="form-label">{{ 'country' | translate }}</label>
@@ -49,7 +58,8 @@
           <option>...</option>
         </select>
     </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">{{ 'save' | translate }}</button>
+    <div>
+      <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">{{ 'cancel' | translate }}</button>
+      <button type="submit" class="btn btn-success">{{ 'save' | translate }}</button>      
     </div>
   </form>

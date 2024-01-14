@@ -7,11 +7,13 @@
     "username":"login",
     "password":"password",
     "email":"Email",
-    "addres":"Addres",
+    "address":"Addres",
     "country":"Country",
     "city":"City",
     "state":"State",
     "errorEmail":"The email format is incorrect.",
     "errorRequired":"The field is required.",
-    "save":"Save" 
+    "save":"Save",
+    "cancel":"Cancel",
+    "createCompany":"Create company"
 }
