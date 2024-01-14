@@ -7,11 +7,13 @@
     "username":"Usuario",
     "password":"Clave",
     "email":"Correo",
-    "addres":"Dirección",
+    "address":"Dirección",
     "country":"Pais",
     "city":"Ciudad",
     "state":"Estado",
     "errorEmail":"El formato del correo es incorrecto.",
     "errorRequired":"El campo es obligatorio.",
-    "save":"Guardar"
+    "save":"Guardar",
+    "cancel":"Cancelar",
+    "createCompany":"Crear empresa"
 }

@@ -1,30 +1,22 @@
-<table class="table table-hover">
-    <thead class="table-light">
-      <tr>
-        <th scope="col">{{ 'company' | translate }}</th>
-        <th scope="col">{{ 'userAdmin' | translate }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="nav-link" [routerLink]='["/company/company/1"]'>Empresa 1</a></td>
-        <td>Admin 1</td>
-      </tr>
-      <tr>
-        <td>Empresa 2</td>
-        <td>Admin 2</td>
-      </tr>
-      <tr>
-        <td>Empresa 3</td>
-        <td>Admin 3</td>
-      </tr>
-      <tr>
-        <td>Empresa 4</td>
-        <td>Admin 4</td>
-      </tr>
-      <tr>
-        <td>Empresa 5</td>
-        <td>Admin 5</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="clearfix">
+  <button type="button" class="btn btn-primary float-end mt-2 mb-2" (click)="createCompany()">{{ 'createCompany' | translate }}</button>
+</div>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">{{ 'company' | translate }}</th>
+      <th scope="col">{{ 'address' | translate }}</th>
+      <th scope="col">{{ 'identification' | translate }}</th>
+      <th scope="col">{{ 'userAdmin' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let company of listCompany">
+      <td><a class="nav-link" [routerLink]='["/company/company/", company._id]'> {{ company.name }} </a></td>
+      <td>{{ company.address }}</td>
+      <td>{{ company.identification }}</td>
+      <td> usuario </td>
+    </tr>
+  </tbody>
+</table>

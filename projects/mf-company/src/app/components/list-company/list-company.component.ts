@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CompanyService } from '../../services/company.service';
+import { Company } from '../../interfaces/company.interface';
 
 @Component({
   selector: 'list-company',
@@ -12,7 +14,17 @@ import { RouterModule } from '@angular/router';
 })
 export class ListCompanyComponent {
 
-  constructor(public translate: TranslateService) {
+  listCompany: Company[] = [];
+
+  constructor(
+      public translate: TranslateService, 
+      private companyService: CompanyService,
+      private router: Router ) {
+    this.companyService.findAll().subscribe(res => {this.listCompany = res;});
+  }
+
+  createCompany(): void {
+    this.router.navigate(['/company']);
   }
 
 }
