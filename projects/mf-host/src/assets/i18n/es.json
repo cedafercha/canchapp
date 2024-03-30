@@ -15,5 +15,13 @@
     "errorRequired":"El campo es obligatorio.",
     "save":"Guardar",
     "cancel":"Cancelar",
-    "createCompany":"Crear empresa"
+    "createCompany":"Crear empresa",
+    "profile":"Perfil",
+    "createProfile":"Crear perfil",
+    "module":"Modulo",
+    "actions":"Acciones",
+    "edit":"Editar",
+    "update":"Actualizar",
+    "delete":"Borrar",
+    "create":"Crear"
 }

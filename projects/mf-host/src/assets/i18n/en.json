@@ -15,5 +15,13 @@
     "errorRequired":"The field is required.",
     "save":"Save",
     "cancel":"Cancel",
-    "createCompany":"Create company"
+    "createCompany":"New company",
+    "profile":"Profile",
+    "createProfile":"New profile",
+    "module":"Module",
+    "actions":"Actions",
+    "edit":"Edit",
+    "update":"Update",
+    "delete":"Delete",
+    "create":"Create"
 }

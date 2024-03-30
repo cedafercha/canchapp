@@ -23,7 +23,7 @@ export class ListCompanyComponent {
     this.companyService.findAll().subscribe(res => {this.listCompany = res;});
   }
 
-  createCompany(): void {
+  create(): void {
     this.router.navigate(['/company']);
   }
 
