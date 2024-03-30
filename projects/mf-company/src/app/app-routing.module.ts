@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListCompanyPageComponent } from './page/company/list-company.page.component';
 import { CompanyPageComponent } from './page/company/company.page.component';
-import { ListCompanyPageComponent } from './page/list-company.page/list-company.page.component';
+import { ListProfilePageComponent } from './page/profile/list-profile.page.component';
+import { ProfilePageComponent } from './page/profile/profile.page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'company', pathMatch: 'full'},
-  {path: 'company/:id', component: CompanyPageComponent },
+  {path: 'list-company', component: ListCompanyPageComponent },
   {path: 'company', component: CompanyPageComponent },
-  {path: 'list', component: ListCompanyPageComponent }
+  {path: 'company/:id', component: CompanyPageComponent },
+  
+  
+  {path: 'list-profile', component: ListProfilePageComponent },
+  {path: 'profile', component: ProfilePageComponent },
+  {path: 'profile/:id', component: ProfilePageComponent },
 ];
 
 @NgModule({

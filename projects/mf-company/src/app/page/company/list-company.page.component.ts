@@ -14,9 +14,7 @@ import { ListCompanyComponent } from '../../components/list-company/list-company
 export class ListCompanyPageComponent {
 
   constructor(public translate: TranslateService) {
-    //translate.setDefaultLang('es');
-    //const browserLang = translate.getBrowserLang();
-    //translate.use(browserLang ?? 'en');
+    
   }
 
 }

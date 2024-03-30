@@ -1,0 +1,20 @@
+<div class="clearfix">
+    <button type="button" class="btn btn-primary float-end mt-2 mb-2" (click)="create()">{{ 'createProfile' | translate }}</button>
+</div>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">{{ 'profile' | translate }}</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let profile of listProfile">
+      <td><a class="nav-link" [routerLink]='["/company/profile/", profile._id]'> {{ profile.name }} </a></td>
+      <td> Editar </td>
+      <td> Borrar </td>
+    </tr>
+  </tbody>
+</table>

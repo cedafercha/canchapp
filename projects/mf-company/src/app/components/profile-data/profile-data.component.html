@@ -1,0 +1,36 @@
+<div class="clearfix">
+    <button type="button" class="btn btn-primary float-end mt-2 mb-2" (click)="save()">{{ 'save' | translate }}</button>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th scope="col"> {{ 'module' | translate }} </th>
+        <th scope="col" class="text-center"> {{ 'create' | translate }} </th>
+        <th scope="col" class="text-center"> {{ 'edit' | translate }} </th>
+        <th scope="col" class="text-center"> {{ 'delete' | translate }} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let module of listModules">
+        <td> {{ module.name }}</td>
+        <td>
+          <div class="form-check text-center">
+            <input class="form-check-input" type="checkbox" value="{{action.Create}}" [checked]="module.actions.includes(action.Create)">
+          </div>
+        </td>
+        <td>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="{{action.Edit}}" [checked]="module.actions.includes(action.Edit)">
+          </div>
+        </td>
+        <td>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="{{action.Delete}}" [checked]="module.actions.includes(action.Delete)">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
