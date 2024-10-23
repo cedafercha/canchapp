@@ -1,6 +1,9 @@
 ng generate application mf-host --routing=true --style=scss --standalone=false --force=true
 ng generate application mf-user --routing=true --style=scss --standalone=false --force=true
 
+# Correr un mf
+npm start mf-NameMicrofront
+
 
 https://www.youtube.com/watch?v=12x2QpDCsfk
 
