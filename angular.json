@@ -36,9 +36,21 @@
 							"projects/mf-host/src/assets"
 						],
 						"styles": [
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/mf-host/src/assets/css/plugins.min.css",
+							"projects/mf-host/src/assets/css/kaiadmin.min.css",
+							"node_modules/@fortawesome/fontawesome-free/css/all.css",
 							"projects/mf-host/src/styles.scss"
 						],
-						"scripts": [],
+						"scripts": [
+							"node_modules/webfontloader/webfontloader.js",
+							"node_modules/jquery/dist/jquery.min.js",
+							"node_modules/@popperjs/core/dist/cjs/popper.js",
+							"node_modules/bootstrap/dist/js/bootstrap.min.js",
+							"node_modules/jquery.scrollbar/jquery.scrollbar.min.js",
+							
+							"projects/mf-host/src/assets/js/kaiadmin.min.js"
+						],
 						"main": "projects/mf-host/src/main.ts",
 						"extraWebpackConfig": "projects/mf-host/webpack.config.js",
 						"commonChunk": false
@@ -49,7 +61,7 @@
 								{
 									"type": "initial",
 									"maximumWarning": "500kb",
-									"maximumError": "1mb"
+									"maximumError": "3mb"
 								},
 								{
 									"type": "anyComponentStyle",
@@ -461,7 +473,6 @@
 							"projects/mf-company/src/assets"
 						],
 						"styles": [
-							"node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
 						],
 						"scripts": []
 					}
@@ -489,7 +500,6 @@
 							"projects/mf-court/src/assets"
 						],
 						"styles": [
-							"node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
 						],
 						"scripts": [],
 						"main": "projects/mf-court/src/main.ts",
@@ -560,13 +570,45 @@
 							"projects/mf-court/src/assets"
 						],
 						"styles": [
-							"node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
 						],
 						"scripts": []
 					}
 				}
 			}
-		}
+    },
+    "auth-lib": {
+      "projectType": "library",
+      "root": "projects/auth-lib",
+      "sourceRoot": "projects/auth-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/auth-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/auth-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/auth-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/auth-lib/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
 	},
 	"cli": {
 		"analytics": "d3637d34-eed0-4123-b1a8-a9387d418033"
