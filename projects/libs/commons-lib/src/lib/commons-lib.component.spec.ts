@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { CommonsLibComponent } from './commons-lib.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('CommonsLibComponent', () => {
+  let component: CommonsLibComponent;
+  let fixture: ComponentFixture<CommonsLibComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoginComponent]
+      imports: [CommonsLibComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(CommonsLibComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

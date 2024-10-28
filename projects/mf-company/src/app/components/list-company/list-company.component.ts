@@ -17,7 +17,7 @@ export class ListCompanyComponent {
   listCompany: Company[] = [];
 
   constructor(
-      public translate: TranslateService, 
+      public translate: TranslateService,
       private companyService: CompanyService,
       private router: Router ) {
     this.companyService.findAll().subscribe(res => {this.listCompany = res;});
