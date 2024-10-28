@@ -1,4 +1,23 @@
 {
+    "Commons":
+    {
+        "Email": "Correo",
+        "Password": "Contraseña"        
+    },
+    "Login":
+    {
+        "WelcomeCanchapp":"Bienvenido a Canchapp",
+        "SignInContinue":"Inicie sesión en su cuenta para continuar",
+        "ForgotPassword": "¿Has olvidado tu contraseña?",
+        "EnterPassword": "Ingresa tu contraseña",
+        "EnterEmail":"Ingresa tu correo",
+        "RememberUser":"Recuérdame la próxima vez",
+        "SignIn":"Iniciar sesión",
+        "Logout":"Cerrar sesión"
+    },
+
+
+
     "company":"Empresa",
     "userAdmin":"Usuario administrador",
     "User":"Usuario",

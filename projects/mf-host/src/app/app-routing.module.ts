@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { authGuard } from './guards/authGuard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},  
@@ -24,6 +25,7 @@ const routes: Routes = [
     children: [
       { 
         path: 'board',
+        canActivate: [authGuard],
         loadChildren: () => 
           loadRemoteModule({
             type: 'module',
@@ -34,7 +36,8 @@ const routes: Routes = [
         
       },
       { 
-        path: 'court',
+        path: 'court', 
+        canActivate: [authGuard],
         loadChildren: () => 
           loadRemoteModule({
             type: 'module',
@@ -46,6 +49,7 @@ const routes: Routes = [
       },
       { 
         path: 'company',
+        canActivate: [authGuard],
         loadChildren: () => 
           loadRemoteModule({
             type: 'module',

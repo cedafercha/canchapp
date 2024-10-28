@@ -8,21 +8,25 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  constructor(private http: HttpClient) {
-    localStorage.setItem("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJOYW1lIjoiTWFudWVsIiwiRW1haWwiOiJtYW51ZWx6YW1icmFub0BvdXRsb29rLmNvbSIsIlRlbmFudCI6IiIsImV4cCI6MTcyOTc1MDEwOX0.GEEIVIA8m0NS-CCJRLVIEtfIyEeRNaPULyjMD39vOJc");
+  constructor(private readonly http: HttpClient) {
+    localStorage.setItem("TKCANCHAPP","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJOYW1lIjoiTWFudWVsIiwiRW1haWwiOiJtYW51ZWx6YW1icmFub0BvdXRsb29rLmNvbSIsIlRlbmFudCI6IiIsImV4cCI6MTczMDA5Mzk1M30.Hy0SBgVcGc7K0vq9OfMaCUZHotnpQF6pMt90kYBwj1Y");
     console.log("Home OK");
   }
 
   async getData() {
-    var login = {
+    let login = {
       Email: 'manuelzambrano@outlook.com',
       Password: '123456'
     };
-    var result = await this.http.post('http://localhost:5197/api/Security/Login',login).subscribe(res => {
-      console.log(res);  
+    this.http.post('http://localhost:5197/api/Security/Login', login).subscribe(res => {
+      console.log(res);
     });
-    //var result = await this.http.get('http://localhost:5197/api/Security/GetAll');
-    console.log(result);
+  }
+
+  async getData2() {
+    this.http.get('http://localhost:5197/api/Security/GetAll').subscribe(res => {
+      console.log(res);
+    });
   }
 
 }

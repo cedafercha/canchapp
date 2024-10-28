@@ -36,19 +36,18 @@
 							"projects/mf-host/src/assets"
 						],
 						"styles": [
-							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/mf-host/src/assets/css/bootstrap.min.css",
 							"projects/mf-host/src/assets/css/plugins.min.css",
 							"projects/mf-host/src/assets/css/kaiadmin.min.css",
 							"node_modules/@fortawesome/fontawesome-free/css/all.css",
 							"projects/mf-host/src/styles.scss"
 						],
 						"scripts": [
-							"node_modules/webfontloader/webfontloader.js",
-							"node_modules/jquery/dist/jquery.min.js",
-							"node_modules/@popperjs/core/dist/cjs/popper.js",
-							"node_modules/bootstrap/dist/js/bootstrap.min.js",
-							"node_modules/jquery.scrollbar/jquery.scrollbar.min.js",
-							
+							"projects/mf-host/src/assets/js/core/jquery-3.7.1.min.js",
+							"projects/mf-host/src/assets/js/kaiadmin.min.js",
+							"projects/mf-host/src/assets/js/core/popper.min.js",
+							"projects/mf-host/src/assets/js/core/bootstrap.min.js",
+							"projects/mf-host/src/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js",							
 							"projects/mf-host/src/assets/js/kaiadmin.min.js"
 						],
 						"main": "projects/mf-host/src/main.ts",
@@ -75,7 +74,13 @@
 						"development": {
 							"optimization": false,
 							"extractLicenses": false,
-							"sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/mf-host/src/environments/environment.ts",
+                  "with": "projects/mf-host/src/environments/environment.development.ts"
+                }
+              ]
 						}
 					},
 					"defaultConfiguration": "production"
@@ -347,40 +352,7 @@
 					}
 				}
 			}
-		},
-		"commons-lib": {
-			"projectType": "library",
-			"root": "projects/commons-lib",
-			"sourceRoot": "projects/commons-lib/src",
-			"prefix": "lib",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:ng-packagr",
-					"options": {
-						"project": "projects/commons-lib/ng-package.json"
-					},
-					"configurations": {
-						"production": {
-							"tsConfig": "projects/commons-lib/tsconfig.lib.prod.json"
-						},
-						"development": {
-							"tsConfig": "projects/commons-lib/tsconfig.lib.json"
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"tsConfig": "projects/commons-lib/tsconfig.spec.json",
-						"polyfills": [
-							"zone.js",
-							"zone.js/testing"
-						]
-					}
-				}
-			}
-		},
+		},		
 		"mf-company": {
 			"projectType": "application",
 			"root": "projects/mf-company",
@@ -578,21 +550,21 @@
     },
     "auth-lib": {
       "projectType": "library",
-      "root": "projects/auth-lib",
-      "sourceRoot": "projects/auth-lib/src",
+      "root": "projects/libs/auth-lib",
+      "sourceRoot": "projects/libs/auth-lib/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/auth-lib/ng-package.json"
+            "project": "projects/libs/auth-lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/auth-lib/tsconfig.lib.prod.json"
+              "tsConfig": "projects/libs/auth-lib/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/auth-lib/tsconfig.lib.json"
+              "tsConfig": "projects/libs/auth-lib/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -600,7 +572,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/auth-lib/tsconfig.spec.json",
+            "tsConfig": "projects/libs/auth-lib/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
@@ -608,7 +580,40 @@
           }
         }
       }
-    }
+    },
+    "commons-lib": {
+      "projectType": "library",
+      "root": "projects/libs/commons-lib",
+      "sourceRoot": "projects/libs/commons-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/libs/commons-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/commons-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/commons-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/libs/commons-lib/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }    
 	},
 	"cli": {
 		"analytics": "d3637d34-eed0-4123-b1a8-a9387d418033"

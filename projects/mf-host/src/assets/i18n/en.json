@@ -1,4 +1,23 @@
 {
+    "Commons":
+    {
+        "Email": "Email",
+        "Password": "Password"        
+    },
+    "Login":
+    {
+        "WelcomeCanchapp": "Welcome Canchapp",
+        "SignInContinue": "Sign in to your account to continue",
+        "ForgotPassword": "Forgot password?",
+        "EnterPassword": "Enter your password",
+        "EnterEmail":"Enter your email",
+        "RememberUser":"Remember me next time",
+        "SignIn":"Sign in",
+        "Logout":"Log out"
+    },
+
+
+
     "company":"Company",
     "userAdmin":"Admin",
     "user":"User",
