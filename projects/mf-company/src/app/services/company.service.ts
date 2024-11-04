@@ -1,49 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Company } from '../interfaces/company.interface';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
+import { CompanyDTO } from '../models/company.model';
+import { ApiEnum } from 'commons-lib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {  
 
+  apiUrl: string = ApiEnum.Company;
+
   constructor(private http: HttpClient) {
   }
 
-  findAll(): Observable<Company[]> {    
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer isAdmin'
-    });
-    const options = { headers: headers };
-    return this.http.get<Company[]>('http://localhost:3000/api/v1/company/findAll', options );
+  get(): Observable<CompanyDTO> {
+    
+    return this.http.post<CompanyDTO>(`${this.apiUrl}Get`, null).pipe(
+      map((response: CompanyDTO) => {
+        // Transformar el campo 'phones' a un arreglo
+        return {
+          ...response,
+          phoneArray: response.phones 
+          ? response.phones.split('|').map(phoneNumber => ({ number: phoneNumber })) 
+          : []
+        };
+      })
+    );
   }
 
-  find(companyId: string): Observable<Company> {    
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer isAdmin'
-    });
-    const options = { headers: headers };
-    return this.http.get<Company>(`http://localhost:3000/api/v1/company/find/${companyId}`, options );
-  }
-
-  create(company: Company): Observable<Company> {    
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer isAdmin'
-    });
-    const options = { headers: headers };
-    return this.http.post<Company>(`http://localhost:3000/api/v1/company/create`, company, options );
-  }
-
-  update(company: Company): Observable<Company> {    
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer isAdmin'
-    });
-    const options = { headers: headers };
-    return this.http.post<Company>(`http://localhost:3000/api/v1/company/update`, company, options );
+  update(company: CompanyDTO): Observable<CompanyDTO> {
+    return this.http.put<CompanyDTO>(`${this.apiUrl}Update`, company);
   }
 }

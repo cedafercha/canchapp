@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListCompanyPageComponent } from './page/company/list-company.page.component';
 import { CompanyPageComponent } from './page/company/company.page.component';
 import { ListProfilePageComponent } from './page/profile/list-profile.page.component';
 import { ProfilePageComponent } from './page/profile/profile.page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'company', pathMatch: 'full'},
-  {path: 'list-company', component: ListCompanyPageComponent },
   {path: 'company', component: CompanyPageComponent },
   {path: 'company/:id', component: CompanyPageComponent },
   

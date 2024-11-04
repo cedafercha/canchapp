@@ -1,65 +1,90 @@
-<form class="row g-3" [formGroup]="formCompany" (ngSubmit)="onSave()">
-    <div class="col-md-6">
-      <label for="email" class="form-label">{{ 'email' | translate }}</label>
-      <input type="email" class="form-control" id="email" formControlName="email" />
-      <div class="invalid-feedback" *ngIf="formCompany.controls['email']?.errors?.['required']">
-        {{ 'errorRequired' | translate }}
+<form class="row g-3" [formGroup]="formCompany">
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">{{ 'Title.Company' | translate }}</div>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="mb-2">
+          <label for="companyName" class="form-label">{{ 'Company.Name' | translate }}</label>
+          <input type="text" formControlName="name" class="form-control" id="companyName" placeholder="{{ 'Company.EnterName' | translate }}">
+          <div *ngIf="formCompany.controls['name']?.invalid && formCompany.controls['name']?.touched" class="text-danger">
+            <small *ngIf="formCompany.controls['name']?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
+          </div>
       </div>
-      <div class="invalid-feedback" *ngIf="formCompany.controls['email']?.errors?.['email']">
-        {{ 'errorEmail' | translate }}
+
+      <div class="mb-2">
+          <label for="companyAddress" class="form-label">{{ 'Company.Direction' | translate }}</label>
+          <input type="text" formControlName="direction" class="form-control" id="companyAddress" placeholder="{{ 'Company.EnterDirection' | translate }}">
+          <div *ngIf="formCompany.controls['direction']?.invalid && formCompany.controls['direction']?.touched" class="text-danger">
+            <small *ngIf="formCompany.controls['direction']?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
+          </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <label for="password" class="form-label">{{ 'password' | translate }}</label>
-      <input type="password" class="form-control" id="password" formControlName="password" />
-      <div class="invalid-feedback">
-        Please choose a username.
+
+      <div class="mb-2">
+          <label for="companyEmail" class="form-label">{{ 'Company.Email' | translate }}</label>
+          <input type="email" formControlName="email" class="form-control" id="companyEmail" placeholder="{{ 'Company.EnterEmail' | translate }}">
+          <div *ngIf="formCompany.controls['email']?.invalid && formCompany.controls['email']?.touched" class="text-danger">
+            <small *ngIf="formCompany.controls['email']?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
+            <small *ngIf="formCompany.controls['email']?.errors?.['email']">{{ 'Error.FieldInvalidName' | translate }}</small>
+          </div>
       </div>
-    </div>
-    <div class="col-12">
-        <label for="name" class="form-label">{{ 'name' | translate }}</label>
-        <input type="text" class="form-control" id="name" formControlName="name">
-        <div class="invalid-feedback" *ngIf="formCompany.controls['name']?.errors?.['required']">
-          {{ 'errorRequired' | translate }}
+
+      <div class="mb-2">
+        <div class="row">
+          <div class="col col-lg-7">
+            <label for="companyPhone" class="form-label me-2">{{ 'Company.Phones' | translate }}</label>
+            <div class="d-flex align-items-center">          
+              <input type="text" formControlName="phone" class="form-control me-2 w-25" id="companyPhone" autocomplete="off" placeholder="{{ 'Company.EnterPhone' | translate }}">
+              <button type="button" class="btn btn-icon btn-round btn-info" (click)="addPhone()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div *ngIf="formCompany.controls['phone']?.invalid && formCompany.controls['phone']?.touched" class="text-danger">
+              <small *ngIf="formCompany.controls['phone']?.errors?.['pattern']">{{ 'Error.FieldOnlyNumberMinLength6' | translate }}</small>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <label for="identification" class="form-label">{{ 'identification' | translate }}</label>
-        <input type="text" class="form-control" id="identification" formControlName="identification">
-        <div class="invalid-feedback" *ngIf="formCompany.controls['identification']?.errors?.['required']">
-          {{ 'errorRequired' | translate }}
+
+        <div formArrayName="phoneArray">
+          <div class="row mt-1"  *ngFor="let phone of phoneArray.controls; let i = index" [formGroupName]="i">
+            <div class="col col-lg-7">
+              <div class="d-flex align-items-center">          
+                <input type="text" formControlName="number" class="form-control me-2 w-25" id="phone-{{ i }}" placeholder="{{ 'Company.EnterPhone' | translate }}">
+                <button type="button" class="btn btn-icon btn-round btn-danger" (click)="removePhone(i)">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
+              <div *ngIf="phone.get('number')?.invalid && phone.get('number')?.touched" class="text-danger">
+                <small *ngIf="phone.get('number')?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
+                <small *ngIf="phone.get('number')?.errors?.['pattern']">{{ 'Error.FieldOnlyNumberMinLength6' | translate }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mb-3">
+        <div class="container mt-4">
+          <div class="row">
+            <div class="col col-lg-2">
+              <label for="allowedUsers" class="form-label">{{ 'Company.AllowedUsers' | translate }}</label>
+              <input type="text" formControlName="allowedUsers" class="form-control w-50" id="allowedUsers" readonly>
+            </div>
+            <div class="col col-lg-2">
+              <label for="allowedCourt" class="form-label">{{ 'Company.AllowedCourt' | translate }}</label>
+              <input type="text" formControlName="allowedCourt" class="form-control w-50" id="allowedCourt" readonly>
+            </div>
+          </div>
         </div>
       </div>
-    <div class="col-md-6">
-      <label for="addres" class="form-label">{{ 'addres' | translate }}</label>
-      <input type="text" class="form-control" id="address" formControlName="address">
-      <div class="invalid-feedback" *ngIf="formCompany.controls['address']?.errors?.['required']">
-        {{ 'errorRequired' | translate }}
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="country" class="form-label">{{ 'country' | translate }}</label>
-      <select id="country" class="form-select">
-        <option selected>Seleccionar...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-4">
-      <label for="state" class="form-label">{{ 'state' | translate }}</label>
-      <select id="state" class="form-select">
-        <option selected>Seleccionar...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-4">
-        <label for="city" class="form-label">{{ 'city' | translate }}</label>
-        <select id="city" class="form-select">
-          <option selected>Seleccionar...</option>
-          <option>...</option>
-        </select>
-    </div>
-    <div>
-      <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">{{ 'cancel' | translate }}</button>
-      <button type="submit" class="btn btn-success">{{ 'save' | translate }}</button>      
-    </div>
-  </form>
+
+    </form>
+  </div>
+  <div class="card-action text-end">
+    <button class="btn btn-success me-2" (click)="onUpdate()">{{ 'Button.Save' | translate }}</button>
+    <button class="btn btn-outline-secondary">{{ 'Button.Cancel' | translate }}</button>
+  </div>
+</div>
+</form>

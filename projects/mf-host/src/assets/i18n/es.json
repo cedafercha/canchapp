@@ -1,8 +1,35 @@
 {
     "Commons":
     {
-        "Email": "Correo",
-        "Password": "Contraseña"        
+        "Email":"Correo",
+        "Password":"Contraseña",
+        "MessageErrorNoti":"Al parecer hubo un error, intente mas tarde por favor.",
+        "MessageSuccessSaveNoti":"Guardado con exito.",
+        "MessageSuccessRemoveNoti":"Eliminado con exito."
+    },
+    "Title":
+    {
+        "Company":"Empresa"        
+    },
+    "Button":
+    {
+        "Save":"Guardar",
+        "Edit":"Editar",
+        "Delete":"Eliminar",
+        "Cancel":"Canelar"
+    },
+    "Company":{
+        "Name":"Nombre de la Compañía",
+        "Direction":"Dirección",
+        "Email":"Correo Electrónico",
+        "Phones":"Teléfonos",
+        "AllowedUsers":"Usuarios permitidos",
+        "AllowedCourt":"Canchas permitidas",
+        "EnterName":"Ingrese el nombre de la compañía",
+        "EnterDirection":"Ingrese la dirección",
+        "EnterPhones":"Ingrese los teléfonos",
+        "EnterPhone":"Ingrese el teléfono",
+        "EnterEmail":"Ingrese el correo electrónico"
     },
     "Login":
     {
@@ -15,32 +42,14 @@
         "SignIn":"Iniciar sesión",
         "Logout":"Cerrar sesión"
     },
-
-
-
-    "company":"Empresa",
-    "userAdmin":"Usuario administrador",
-    "User":"Usuario",
-    "name":"Nombre",
-    "identification":"Identificación",
-    "username":"Usuario",
-    "password":"Clave",
-    "email":"Correo",
-    "address":"Dirección",
-    "country":"Pais",
-    "city":"Ciudad",
-    "state":"Estado",
-    "errorEmail":"El formato del correo es incorrecto.",
-    "errorRequired":"El campo es obligatorio.",
-    "save":"Guardar",
-    "cancel":"Cancelar",
-    "createCompany":"Crear empresa",
-    "profile":"Perfil",
-    "createProfile":"Crear perfil",
-    "module":"Modulo",
-    "actions":"Acciones",
-    "edit":"Editar",
-    "update":"Actualizar",
-    "delete":"Borrar",
-    "create":"Crear"
+    "Error":
+    {
+        "FieldRequired": "Campo requerido.",
+        "FieldOnlyNumber": "Solo números.",
+        "FieldMax80": "Maximo 80 caracteres.",
+        "FieldMax50": "Maximo 50 caracteres.",
+        "FieldInvalidName": "Correo invalido.",
+        "FieldMinLength6":"Al menos 6 caractres.",
+        "FieldOnlyNumberMinLength6":"Solo números y al menos 6 caracteres."
+    }
 }

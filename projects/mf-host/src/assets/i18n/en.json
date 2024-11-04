@@ -1,8 +1,21 @@
 {
     "Commons":
     {
-        "Email": "Email",
-        "Password": "Password"        
+        "Email":"Email",
+        "Password":"Password",
+        "MessageSuccessSaveNoti":"Successfully saved.",
+        "MessageSuccessRemoveNoti":"Successfully removed."
+    },
+    "Title":
+    {
+        "Company":"Company"        
+    },
+    "Button":
+    {
+        "Save":"Save",
+        "Edit":"Edit",
+        "Delete":"Delete",
+        "Cancel":"Cancel"
     },
     "Login":
     {
@@ -15,32 +28,27 @@
         "SignIn":"Sign in",
         "Logout":"Log out"
     },
-
-
-
-    "company":"Company",
-    "userAdmin":"Admin",
-    "user":"User",
-    "name":"name",
-    "identification":"identification",
-    "username":"login",
-    "password":"password",
-    "email":"Email",
-    "address":"Addres",
-    "country":"Country",
-    "city":"City",
-    "state":"State",
-    "errorEmail":"The email format is incorrect.",
-    "errorRequired":"The field is required.",
-    "save":"Save",
-    "cancel":"Cancel",
-    "createCompany":"New company",
-    "profile":"Profile",
-    "createProfile":"New profile",
-    "module":"Module",
-    "actions":"Actions",
-    "edit":"Edit",
-    "update":"Update",
-    "delete":"Delete",
-    "create":"Create"
+    "Company":{
+        "Name":"Company Name",
+        "Direction":"Address",
+        "Email":"Email",
+        "Phones":"Phones",
+        "AllowedUsers":"Allowed Users",
+        "AllowedCourt":"Allowed Courts",
+        "EnterName":"Enter the company name",
+        "EnterDirection":"Enter the address",
+        "EnterPhones":"Enter the phones",
+        "EnterPhone":"Enter phone",
+        "EnterEmail":"Enter the email"
+    },
+    "Error":
+    {
+        "FieldRequired": "Required field.",
+        "FieldOnlyNumber": "Just numbers.",
+        "FieldMax80": "Maximum 80 characters.",
+        "FieldMax50": "Maximum 50 characters.",
+        "FieldInvalidName": "Invalid email.",
+        "FieldMinLength6":"At least 6 characters.",
+        "FieldOnlyNumberMinLength6":"Numbers only and at least 6 characters."
+    }
 }
