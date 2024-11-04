@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Profile, Module, Action } from '../../interfaces/profile.interface';
+import { Profile, Module, Action } from '../../models/profile.interface';
 import { ProfileService } from '../../services/profile.service';
 
 @Component({

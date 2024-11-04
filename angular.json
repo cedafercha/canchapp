@@ -47,6 +47,7 @@
 							"projects/mf-host/src/assets/js/kaiadmin.min.js",
 							"projects/mf-host/src/assets/js/core/popper.min.js",
 							"projects/mf-host/src/assets/js/core/bootstrap.min.js",
+							"projects/mf-host/src/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js",
 							"projects/mf-host/src/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js",							
 							"projects/mf-host/src/assets/js/kaiadmin.min.js"
 						],

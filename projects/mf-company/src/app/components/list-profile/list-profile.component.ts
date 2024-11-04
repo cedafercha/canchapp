@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Profile } from '../../interfaces/profile.interface';
+import { Profile } from '../../models/profile.interface';
 import { ProfileService } from '../../services/profile.service';
 
 
