@@ -48,7 +48,7 @@
 							"projects/mf-host/src/assets/js/core/popper.min.js",
 							"projects/mf-host/src/assets/js/core/bootstrap.min.js",
 							"projects/mf-host/src/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js",
-							"projects/mf-host/src/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js",							
+							"projects/mf-host/src/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js",
 							"projects/mf-host/src/assets/js/kaiadmin.min.js"
 						],
 						"main": "projects/mf-host/src/main.ts",
@@ -75,13 +75,13 @@
 						"development": {
 							"optimization": false,
 							"extractLicenses": false,
-              "sourceMap": true,
-              "fileReplacements": [
-                {
-                  "replace": "projects/mf-host/src/environments/environment.ts",
-                  "with": "projects/mf-host/src/environments/environment.development.ts"
-                }
-              ]
+							"sourceMap": true,
+							"fileReplacements": [
+								{
+									"replace": "projects/mf-host/src/environments/environment.ts",
+									"with": "projects/mf-host/src/environments/environment.development.ts"
+								}
+							]
 						}
 					},
 					"defaultConfiguration": "production"
@@ -353,7 +353,7 @@
 					}
 				}
 			}
-		},		
+		},
 		"mf-company": {
 			"projectType": "application",
 			"root": "projects/mf-company",
@@ -445,8 +445,7 @@
 							"projects/mf-company/src/favicon.ico",
 							"projects/mf-company/src/assets"
 						],
-						"styles": [
-						],
+						"styles": [],
 						"scripts": []
 					}
 				}
@@ -472,8 +471,7 @@
 							"projects/mf-court/src/favicon.ico",
 							"projects/mf-court/src/assets"
 						],
-						"styles": [
-						],
+						"styles": [],
 						"scripts": [],
 						"main": "projects/mf-court/src/main.ts",
 						"extraWebpackConfig": "projects/mf-court/webpack.config.js",
@@ -542,79 +540,177 @@
 							"projects/mf-court/src/favicon.ico",
 							"projects/mf-court/src/assets"
 						],
+						"styles": [],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"auth-lib": {
+			"projectType": "library",
+			"root": "projects/libs/auth-lib",
+			"sourceRoot": "projects/libs/auth-lib/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:ng-packagr",
+					"options": {
+						"project": "projects/libs/auth-lib/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/libs/auth-lib/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/libs/auth-lib/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"tsConfig": "projects/libs/auth-lib/tsconfig.spec.json",
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						]
+					}
+				}
+			}
+		},
+		"commons-lib": {
+			"projectType": "library",
+			"root": "projects/libs/commons-lib",
+			"sourceRoot": "projects/libs/commons-lib/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:ng-packagr",
+					"options": {
+						"project": "projects/libs/commons-lib/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/libs/commons-lib/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/libs/commons-lib/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"tsConfig": "projects/libs/commons-lib/tsconfig.spec.json",
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						]
+					}
+				}
+			}
+		},
+		"mf-booking": {
+			"projectType": "application",
+			"root": "projects/mf-booking",
+			"sourceRoot": "projects/mf-booking/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/mf-booking",
+						"index": "projects/mf-booking/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/mf-booking/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/mf-booking/src/favicon.ico",
+							"projects/mf-booking/src/assets"
+						],
 						"styles": [
+							"projects/mf-booking/src/styles.scss"
+						],
+						"scripts": [],
+						"main": "projects/mf-booking/src/main.ts",
+						"extraWebpackConfig": "projects/mf-booking/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mf-booking/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "mf-booking:build:production",
+							"extraWebpackConfig": "projects/mf-booking/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "mf-booking:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4205,
+						"publicHost": "http://localhost:4205",
+						"extraWebpackConfig": "projects/mf-booking/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"buildTarget": "mf-booking:build",
+						"extraWebpackConfig": "projects/mf-booking/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/mf-booking/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/mf-booking/src/favicon.ico",
+							"projects/mf-booking/src/assets"
+						],
+						"styles": [
+							"projects/mf-booking/src/styles.scss"
 						],
 						"scripts": []
 					}
 				}
 			}
-    },
-    "auth-lib": {
-      "projectType": "library",
-      "root": "projects/libs/auth-lib",
-      "sourceRoot": "projects/libs/auth-lib/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/libs/auth-lib/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/libs/auth-lib/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/libs/auth-lib/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/libs/auth-lib/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
-        }
-      }
-    },
-    "commons-lib": {
-      "projectType": "library",
-      "root": "projects/libs/commons-lib",
-      "sourceRoot": "projects/libs/commons-lib/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/libs/commons-lib/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/libs/commons-lib/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/libs/commons-lib/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/libs/commons-lib/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
-        }
-      }
-    }    
+		}
 	},
 	"cli": {
 		"analytics": "d3637d34-eed0-4123-b1a8-a9387d418033"
