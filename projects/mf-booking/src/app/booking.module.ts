@@ -9,4 +9,4 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
   ]
 })
-export class CompanyModule { }
+export class BookingModule { }

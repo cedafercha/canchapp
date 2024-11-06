@@ -36,6 +36,18 @@ const routes: Routes = [
         
       },
       { 
+        path: 'company',
+        canActivate: [authGuard],
+        loadChildren: () => 
+          loadRemoteModule({
+            type: 'module',
+            remoteEntry: 'http://localhost:4203/remoteEntry.js',
+            exposedModule: './CompanyModule'
+          })
+          .then(m => m.CompanyModule)
+        
+      },
+      { 
         path: 'court', 
         canActivate: [authGuard],
         loadChildren: () => 
@@ -48,15 +60,15 @@ const routes: Routes = [
         
       },
       { 
-        path: 'company',
+        path: 'booking', 
         canActivate: [authGuard],
         loadChildren: () => 
           loadRemoteModule({
             type: 'module',
-            remoteEntry: 'http://localhost:4203/remoteEntry.js',
-            exposedModule: './CompanyModule'
+            remoteEntry: 'http://localhost:4205/remoteEntry.js',
+            exposedModule: './BookingModule'
           })
-          .then(m => m.CompanyModule)
+          .then(m => m.BookingModule)
         
       }
     ]

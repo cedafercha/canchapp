@@ -7,6 +7,7 @@ module.exports = withModuleFederationPlugin({
     mfDashBoard: "http://localhost:4202/remoteEntry.js",
     mfCompany: "http://localhost:4203/remoteEntry.js",
     mfCourt: "http://localhost:4204/remoteEntry.js",
+    mfBooking: "http://localhost:4205/remoteEntry.js",
   },
 
   shared: {
