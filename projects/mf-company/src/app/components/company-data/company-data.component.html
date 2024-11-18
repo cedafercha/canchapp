@@ -4,7 +4,6 @@
     <div class="card-title">{{ 'Title.Company' | translate }}</div>
   </div>
   <div class="card-body">
-    <form>
       <div class="mb-2">
           <label for="companyName" class="form-label">{{ 'Company.Name' | translate }}</label>
           <input type="text" formControlName="name" class="form-control" id="companyName" placeholder="{{ 'Company.EnterName' | translate }}">
@@ -79,8 +78,6 @@
           </div>
         </div>
       </div>
-
-    </form>
   </div>
   <div class="card-action text-end">
     <button class="btn btn-success me-2" (click)="onUpdate()">{{ 'Button.Save' | translate }}</button>

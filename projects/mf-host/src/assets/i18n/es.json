@@ -11,6 +11,16 @@
     {
         "Company":"Empresa"        
     },
+    "Browser":
+    {
+        "LookFor":"Buscar",
+        "SearchForCustomer":"Buscar cliente"        
+    },
+    "Select":
+    {
+        "SelectOption":"Selecciona una opción",
+        "SelectCustomer":"Selecciona cancha"        
+    },
     "Button":
     {
         "Save":"Guardar",
@@ -30,6 +40,13 @@
         "EnterPhones":"Ingrese los teléfonos",
         "EnterPhone":"Ingrese el teléfono",
         "EnterEmail":"Ingrese el correo electrónico"
+    },
+    "Booking":{
+        "CustomerBooking":"Cliente de la reserva",
+        "Comment":"Comentarios"
+    },
+    "Court":{
+        "Court":"Cancha"
     },
     "Login":
     {

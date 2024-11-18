@@ -23,3 +23,6 @@ https://www.youtube.com/watch?v=YEHo0kJrYQU&list=PL1UWPWOy5UlfLWfSstHBW-iVu6RWJt
 Tutorial Modulo Federacion
 https://github.com/angular-architects/module-federation-plugin/blob/main/libs/mf/README.md
 https://github.com/angular-architects/module-federation-plugin/blob/main/libs/mf/tutorial/tutorial.md
+
+// Explicacion controles libreria
+https://www.youtube.com/watch?v=uXpQ26HRFfI
