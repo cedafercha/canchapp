@@ -6,13 +6,14 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { EventComponent } from "../event/event.component";
+import { DateComponent } from 'commons-lib';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [FullCalendarModule, EventComponent],
+  imports: [FullCalendarModule, EventComponent, DateComponent],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
 })

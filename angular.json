@@ -35,21 +35,23 @@
 							"projects/mf-host/src/favicon.ico",
 							"projects/mf-host/src/assets"
 						],
-						"styles": [
+						"styles": [							
 							"projects/mf-host/src/assets/css/bootstrap.min.css",
 							"projects/mf-host/src/assets/css/plugins.min.css",
 							"projects/mf-host/src/assets/css/kaiadmin.min.css",
 							"node_modules/@fortawesome/fontawesome-free/css/all.css",
+							"node_modules/jquery-ui/themes/base/all.css",
 							"projects/mf-host/src/styles.scss"
 						],
 						"scripts": [
-							"projects/mf-host/src/assets/js/core/jquery-3.7.1.min.js",
+							"projects/mf-host/src/assets/js/core/jquery-3.7.1.min.js",							
 							"projects/mf-host/src/assets/js/kaiadmin.min.js",
 							"projects/mf-host/src/assets/js/core/popper.min.js",
 							"projects/mf-host/src/assets/js/core/bootstrap.min.js",
 							"projects/mf-host/src/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js",
 							"projects/mf-host/src/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js",
-							"projects/mf-host/src/assets/js/kaiadmin.min.js"
+							"projects/mf-host/src/assets/js/kaiadmin.min.js",
+							"node_modules/jquery-ui/dist/jquery-ui.min.js"
 						],
 						"main": "projects/mf-host/src/main.ts",
 						"extraWebpackConfig": "projects/mf-host/webpack.config.js",

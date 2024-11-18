@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { BrowserComponent, BrowserIdEnum, SelectComponent, SelectIdEnum } from 'commons-lib';
+import { BrowserComponent, BrowserIdEnum, DateComponent, SelectComponent, SelectIdEnum } from 'commons-lib';
 import { EventDTO } from '../../models/event.model';
 
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [CommonModule, TranslateModule, ReactiveFormsModule, BrowserComponent, SelectComponent],
+  imports: [CommonModule, TranslateModule, ReactiveFormsModule, BrowserComponent, SelectComponent, DateComponent],
   templateUrl: './event.component.html',
   styleUrl: './event.component.css'
 })
