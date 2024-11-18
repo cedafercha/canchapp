@@ -10,6 +10,16 @@
     {
         "Company":"Company"        
     },
+    "Browser":
+    {
+        "LookFor":"Look for",
+        "SearchForCustomer":"Search for client"        
+    },
+    "Select":
+    {
+        "SelectOption":"Select option",
+        "SelectCustomer":"Selecciona court"        
+    },
     "Button":
     {
         "Save":"Save",
@@ -40,6 +50,13 @@
         "EnterPhones":"Enter the phones",
         "EnterPhone":"Enter phone",
         "EnterEmail":"Enter the email"
+    },
+    "Booking":{
+        "CustomerBooking":"Reservation client",
+        "Comment":"Comment"
+    },
+    "Court":{
+        "Court":"Cancha"
     },
     "Error":
     {

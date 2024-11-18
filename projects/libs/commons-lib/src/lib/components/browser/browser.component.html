@@ -1,0 +1,23 @@
+<div>      
+    <div class="input-group">
+      <span class="input-group-text">
+        <i class="fa fa-search"></i>
+      </span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="{{ placeHolder | translate}}"
+        [value]="value?.text"
+        [disabled]="isDisabled"
+        (input)="onInput($event)"
+        (blur)="onTouched()" />
+      <span *ngIf="selectedItem" class="input-group-text" (click)="clearSelected()" >x</span>
+    </div>
+    <ul *ngIf="items.length > 0" class="list-group position-absolute mt-1" style="width: 100%; z-index: 1000;">
+      <li *ngFor="let item of items" class="list-group-item list-group-item-action" (click)="onSelectItem(item)">
+        {{ item.text }}
+      </li>
+    </ul>
+</div>
+  
+

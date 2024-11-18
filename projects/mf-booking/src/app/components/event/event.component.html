@@ -1,0 +1,27 @@
+<form [formGroup]="formEvent">
+
+  <div class="mb-2">
+      <label for="CustomerBooking" class="form-label">{{ 'Booking.CustomerBooking' | translate }}</label>
+      <lib-browser formControlName="customer" [browserId]="browserId"></lib-browser>
+      <div *ngIf="formEvent.controls['customer']?.invalid && formEvent.controls['customer']?.touched" class="text-danger">
+        <small *ngIf="formEvent.controls['customer']?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
+      </div>
+  </div>
+
+  <div class="mb-2">
+    <label for="Court" class="form-label">{{ 'Court.Court' | translate }}</label>
+    <lib-select formControlName="court" [selectId]="selectId" [empty]="false"></lib-select>
+    <div *ngIf="formEvent.controls['court']?.invalid && formEvent.controls['court']?.touched" class="text-danger">
+      <small *ngIf="formEvent.controls['court']?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <label for="comment">{{ 'Booking.Comment' | translate }}</label>
+    <textarea class="form-control" id="comment" rows="5"> </textarea>
+  </div>
+
+</form>
+
+
+
