@@ -8,5 +8,6 @@ export * from './lib/notification.service';
 export * from './lib/commons-lib.service';
 export * from './lib/components/browser/browser.component';
 export * from './lib/components/select/select.component';
+export * from './lib/components/date/date.component';
 export * from './lib/commons-lib.component';
 export * from './lib/commons-lib.module';
