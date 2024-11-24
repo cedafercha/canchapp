@@ -53,10 +53,15 @@
     },
     "Booking":{
         "CustomerBooking":"Reservation client",
-        "Comment":"Comment"
+        "Comment":"Comment",
+        "DateTimeReservation":"Date and time of reservation",
+        "IsRecurringBooking":"Recurring booking?"
     },
     "Court":{
         "Court":"Cancha"
+    },
+    "Tooltip": {
+        "RecurringBooking":"This reservation will remain weekly"
     },
     "Error":
     {

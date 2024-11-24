@@ -33,8 +33,8 @@ export class BrowserComponent implements ControlValueAccessor {
   value: { text: string, id: string, args?: string } | null = null;
   isDisabled: boolean = false;
 
-  onChange: (value: { text: string, id: string, args?: string } | null) => void = () => {};
-  onTouched: () => void = () => {};
+  onChangeFn: (value: { text: string, id: string, args?: string } | null) => void = () => {};
+  onTouchedFn: () => void = () => {};
 
   private readonly inputSubject = new Subject<string>();
   private readonly inputSubscription: Subscription;
@@ -66,11 +66,11 @@ export class BrowserComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: (value: { text: string, id: string, args?: string } | null) => void): void {
-    this.onChange = fn;
+    this.onChangeFn = fn;
   }
 
   registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
+    this.onTouchedFn = fn;
   }
 
   setDisabledState?(isDisabled: boolean): void {
@@ -81,7 +81,7 @@ export class BrowserComponent implements ControlValueAccessor {
     const inputValue = (event.target as HTMLInputElement).value;
     this.value = { text: inputValue, id: '' }; // Solo el texto al principio
     // Notifica el cambio al formulario
-    this.onChange(this.value);
+    this.onChangeFn(this.value);
 
     // Emite el valor ingresado para manejarlo con debounceTime
     this.inputSubject.next(inputValue);
@@ -101,7 +101,7 @@ export class BrowserComponent implements ControlValueAccessor {
   onSelectItem(item: { text: string, id: string, args?: string }): void {
     this.selectedItem = item;
     this.value = item; // Establece el valor seleccionado
-    this.onChange(item); // Notifica al formulario
+    this.onChangeFn(item); // Notifica al formulario
     this.items = []; // Limpia las sugerencias
   }
 
@@ -109,7 +109,7 @@ export class BrowserComponent implements ControlValueAccessor {
     this.selectedItem = null;
     this.value = null; // Limpia el valor del campo
     this.items = []; // Limpia las sugerencias
-    this.onChange(null); // Notifica al formulario el cambio a vacío
+    this.onChangeFn(null); // Notifica al formulario el cambio a vacío
   }
 
   selectItem(): any {

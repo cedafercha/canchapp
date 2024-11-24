@@ -26,7 +26,7 @@
         "Save":"Guardar",
         "Edit":"Editar",
         "Delete":"Eliminar",
-        "Cancel":"Canelar"
+        "Cancel":"Cancelar"
     },
     "Company":{
         "Name":"Nombre de la Compañía",
@@ -43,7 +43,9 @@
     },
     "Booking":{
         "CustomerBooking":"Cliente de la reserva",
-        "Comment":"Comentarios"
+        "Comment":"Comentarios",
+        "DateTimeReservation":"Fecha y hora de reserva",
+        "IsRecurringBooking":"¿Reserva recurrente?"
     },
     "Court":{
         "Court":"Cancha"
@@ -58,6 +60,9 @@
         "RememberUser":"Recuérdame la próxima vez",
         "SignIn":"Iniciar sesión",
         "Logout":"Cerrar sesión"
+    },
+    "Tooltip": {
+        "RecurringBooking":"Esta reserva quedara semanal"
     },
     "Error":
     {

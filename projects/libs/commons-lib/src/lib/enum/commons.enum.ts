@@ -1,8 +1,9 @@
 export enum ApiEnum {
+    Booking = 'http://localhost:5196/api/Booking/',
     Security = 'http://localhost:5197/api/Security/',
     Company = 'http://localhost:5198/api/Company/',
     Browser = 'http://localhost:5199/api/Browser/',  
-    Select = 'http://localhost:5199/api/Select/', 
+    Select = 'http://localhost:5199/api/Select/',    
 }
 
 export enum NotificationTypeEnum {
