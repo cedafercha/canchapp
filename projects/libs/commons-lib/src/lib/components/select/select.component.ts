@@ -31,8 +31,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   value: { text: string, id: string, args?: string } | null = null;
   isDisabled: boolean = false;
 
-  onChange: (value: { text: string, id: string, args?: string } | null) => void = () => {};
-  onTouched: () => void = () => {};
+  onChangeFn: (value: { text: string, id: string, args?: string } | null) => void = () => {};
+  onTouchedFn: () => void = () => {};
 
   private selectSubscription: Subscription | undefined;
 
@@ -46,6 +46,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     const apiUrl = `${ApiEnum.Select}GetSelect/${this.selectId}`;
     this.selectSubscription = this.http.get<any[]>(apiUrl).subscribe((response) => {
       this.items = response;
+      if(!this.empty && this.items.length > 0) {
+        this.writeValue(this.items[0]);
+        this.onChangeFn(this.items[0]);
+      }
     });
   }
   
@@ -54,20 +58,31 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   }
 
   registerOnChange(fn: (value: { text: string, id: string, args?: string } | null) => void): void {
-    this.onChange = fn;
+    this.onChangeFn = fn;
   }
 
   registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
+    this.onTouchedFn = fn;
   }
 
   setDisabledState?(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
   }
 
-  private callApi(): Observable<{ text: string, id: string, args?: string }[]> {
-    const apiUrl = `${ApiEnum.Select}GetSelect/${this.selectId}`;
-    return this.http.get<any[]>(apiUrl);
+  onChange($event: any): void {
+
+    const item = this.items.find(item => item.id == $event.target.value);
+
+    if (item) {
+      this.onChangeFn(item);
+    } else {
+      this.onChangeFn(null);
+    }
+    this.onTouchedFn();
+  }
+
+  onTouched(): void {
+    this.onTouchedFn();
   }
 
   ngOnDestroy(): void {

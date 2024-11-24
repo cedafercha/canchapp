@@ -1,6 +1,11 @@
+import { CourtEventDTO } from "./courtEvent.model";
+import { CustomerEventDTO } from "./customerEvent.model";
+
 export class EventDTO {
-    IdCustomer?: number;
-    IdCourt?: number;
-    DateTimeStart: Date = new Date();
-    DateTimeEnd: Date = new Date();
+    dateTimeStart: Date = new Date();
+    dateTimeEnd: Date = new Date();
+    customer?: CustomerEventDTO;
+    court?: CourtEventDTO;
+    observation: string = '';
+    isRecurrent: boolean = false;    
 }

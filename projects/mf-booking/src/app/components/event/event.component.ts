@@ -1,19 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { BrowserComponent, BrowserIdEnum, DateComponent, SelectComponent, SelectIdEnum } from 'commons-lib';
+import { BrowserComponent, BrowserIdEnum, SelectComponent, SelectIdEnum } from 'commons-lib';
 import { EventDTO } from '../../models/event.model';
 
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [CommonModule, TranslateModule, ReactiveFormsModule, BrowserComponent, SelectComponent, DateComponent],
+  imports: [CommonModule, TranslateModule, ReactiveFormsModule, BrowserComponent, SelectComponent],
   templateUrl: './event.component.html',
   styleUrl: './event.component.css'
 })
 
-export class EventComponent implements OnInit {
+export class EventComponent implements OnInit, OnChanges {
+
+  @Input() dateTimeStart: Date = new Date();
+  @Input() dateTimeEnd: Date = new Date();
 
   public formEvent: FormGroup = new FormGroup({});
   msgSave: string = '';
@@ -28,10 +31,22 @@ export class EventComponent implements OnInit {
   ngOnInit(): void {
 
     this.formEvent = this.formBuilder.group({
+      dateTimeStart: [this.dateTimeStart],
+      dateTimeEnd: [this.dateTimeEnd],
       customer: ['', [Validators.required]],
-      court: ['', [Validators.required]]
+      court: ['', [Validators.required]],
+      isRecurrent: [false],
+      observation: ['']
     });
-    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['dateTimeStart'] && this.formEvent) {
+      this.formEvent.get('dateTimeStart')?.setValue(this.dateTimeStart);
+    }
+    if (changes['dateTimeEnd'] && this.formEvent) {
+      this.formEvent.get('dateTimeEnd')?.setValue(this.dateTimeEnd);
+    }
   }
 
   get autocompleteCustomer(): FormControl {
@@ -42,11 +57,13 @@ export class EventComponent implements OnInit {
     return this.formEvent.get('court') as FormControl;
   }
 
-  getEvent() {
+  getEvent(): EventDTO | null {
+    this.formEvent.markAllAsTouched();
     if(this.formEvent.valid) {
-      let eventmp: EventDTO = this.formEvent.value;
-      console.log(eventmp);
+      const eventTmp: EventDTO = this.formEvent.value as EventDTO;
+      return eventTmp;
     }
+    return null;
   }
 
   getCountry(): void {
