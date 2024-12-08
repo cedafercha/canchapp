@@ -45,3 +45,12 @@ export enum BrowserIdEnum {
 export enum SelectIdEnum {
 	ListCourt = 'ListCourt'
 }
+
+export enum CodeErrorEnum {
+    /* Error general  */
+    InternalServerError = 100,
+    /* Error Reservas  */
+	BookingNotAvailable = 101,
+    ClientNotFound = 102,
+    NotCredit = 103
+}

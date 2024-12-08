@@ -8,7 +8,7 @@
           <label for="companyName" class="form-label">{{ 'Company.Name' | translate }}</label>
           <input type="text" formControlName="name" class="form-control" id="companyName" placeholder="{{ 'Company.EnterName' | translate }}">
           <div *ngIf="formCompany.controls['name']?.invalid && formCompany.controls['name']?.touched" class="text-danger">
-            <small *ngIf="formCompany.controls['name']?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
+            <small *ngIf="formCompany.controls['name']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
           </div>
       </div>
 
@@ -16,7 +16,7 @@
           <label for="companyAddress" class="form-label">{{ 'Company.Direction' | translate }}</label>
           <input type="text" formControlName="direction" class="form-control" id="companyAddress" placeholder="{{ 'Company.EnterDirection' | translate }}">
           <div *ngIf="formCompany.controls['direction']?.invalid && formCompany.controls['direction']?.touched" class="text-danger">
-            <small *ngIf="formCompany.controls['direction']?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
+            <small *ngIf="formCompany.controls['direction']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
           </div>
       </div>
 
@@ -24,8 +24,8 @@
           <label for="companyEmail" class="form-label">{{ 'Company.Email' | translate }}</label>
           <input type="email" formControlName="email" class="form-control" id="companyEmail" placeholder="{{ 'Company.EnterEmail' | translate }}">
           <div *ngIf="formCompany.controls['email']?.invalid && formCompany.controls['email']?.touched" class="text-danger">
-            <small *ngIf="formCompany.controls['email']?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
-            <small *ngIf="formCompany.controls['email']?.errors?.['email']">{{ 'Error.FieldInvalidName' | translate }}</small>
+            <small *ngIf="formCompany.controls['email']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
+            <small *ngIf="formCompany.controls['email']?.errors?.['email']">{{ 'Validations.FieldInvalidName' | translate }}</small>
           </div>
       </div>
 
@@ -40,7 +40,7 @@
               </button>
             </div>
             <div *ngIf="formCompany.controls['phone']?.invalid && formCompany.controls['phone']?.touched" class="text-danger">
-              <small *ngIf="formCompany.controls['phone']?.errors?.['pattern']">{{ 'Error.FieldOnlyNumberMinLength6' | translate }}</small>
+              <small *ngIf="formCompany.controls['phone']?.errors?.['pattern']">{{ 'Validations.FieldOnlyNumberMinLength6' | translate }}</small>
             </div>
           </div>
         </div>
@@ -55,8 +55,8 @@
                 </button>
               </div>
               <div *ngIf="phone.get('number')?.invalid && phone.get('number')?.touched" class="text-danger">
-                <small *ngIf="phone.get('number')?.errors?.['required']">{{ 'Error.FieldRequired' | translate }}</small>
-                <small *ngIf="phone.get('number')?.errors?.['pattern']">{{ 'Error.FieldOnlyNumberMinLength6' | translate }}</small>
+                <small *ngIf="phone.get('number')?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
+                <small *ngIf="phone.get('number')?.errors?.['pattern']">{{ 'Validations.FieldOnlyNumberMinLength6' | translate }}</small>
               </div>
             </div>
           </div>

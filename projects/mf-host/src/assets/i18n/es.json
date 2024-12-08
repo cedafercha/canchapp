@@ -45,7 +45,10 @@
         "CustomerBooking":"Cliente de la reserva",
         "Comment":"Comentarios",
         "DateTimeReservation":"Fecha y hora de reserva",
-        "IsRecurringBooking":"¿Reserva recurrente?"
+        "IsRecurringBooking":"¿Reserva recurrente?",
+        "BookingCreated":"Reserva creada correctamente.",
+        "TitleModalNew":"Nueva reserva",
+        "TitleModalEdit":"Edición reserva"
     },
     "Court":{
         "Court":"Cancha"
@@ -64,7 +67,7 @@
     "Tooltip": {
         "RecurringBooking":"Esta reserva quedara semanal"
     },
-    "Error":
+    "Validations":
     {
         "FieldRequired": "Campo requerido.",
         "FieldOnlyNumber": "Solo números.",
@@ -73,5 +76,9 @@
         "FieldInvalidName": "Correo invalido.",
         "FieldMinLength6":"Al menos 6 caractres.",
         "FieldOnlyNumberMinLength6":"Solo números y al menos 6 caracteres."
+    },
+    "Error":
+    {
+        "BookingNotAvailable":"La reserva no está disponible."
     }
 }

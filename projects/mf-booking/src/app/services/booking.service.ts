@@ -3,15 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiEnum } from 'commons-lib';
 import { BookingDTO } from '../models/booking.model';
+import { EventCalendarDTO } from '../models/eventCalendar.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookingService {  
+export class BookingService {
 
 apiUrl: string = ApiEnum.Booking;
 
-constructor(private http: HttpClient) {
+constructor(private readonly http: HttpClient) {
 }
 
 //   findAll(): Observable<Profile[]> {
@@ -27,6 +28,10 @@ constructor(private http: HttpClient) {
 create(booking: BookingDTO): Observable<BookingDTO> {
     return this.http.post<BookingDTO>(`${this.apiUrl}Create`, booking);
 }
+
+getEvents(): Observable<EventCalendarDTO[]> {
+  return this.http.get<EventCalendarDTO[]>(`${this.apiUrl}GetEvents`);
+}  
 
 //   update(profile: Profile): Observable<Profile> {
 //     const options = { headers: this.headers };
