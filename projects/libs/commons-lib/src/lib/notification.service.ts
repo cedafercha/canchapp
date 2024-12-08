@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JqueryService } from './service/jquery-service.service';
 import { Notifications } from './models/notification.model';
-import { NotificationTypeEnum, PlacementAlignEnum, PlacementFromEnum } from './enum/commons.enum';
+import { NotificationTypeEnum } from './enum/commons.enum';
 
 @Injectable({
   providedIn: 'root'

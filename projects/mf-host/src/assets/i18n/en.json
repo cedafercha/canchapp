@@ -55,7 +55,10 @@
         "CustomerBooking":"Reservation client",
         "Comment":"Comment",
         "DateTimeReservation":"Date and time of reservation",
-        "IsRecurringBooking":"Recurring booking?"
+        "IsRecurringBooking":"Recurring booking?",
+        "BookingCreated":"Reservation created successfully.",
+        "TitleModalNew":"New booking",
+        "TitleModalEdit":"Edit booking"
     },
     "Court":{
         "Court":"Cancha"
@@ -63,7 +66,7 @@
     "Tooltip": {
         "RecurringBooking":"This reservation will remain weekly"
     },
-    "Error":
+    "Validations":
     {
         "FieldRequired": "Required field.",
         "FieldOnlyNumber": "Just numbers.",
@@ -72,5 +75,9 @@
         "FieldInvalidName": "Invalid email.",
         "FieldMinLength6":"At least 6 characters.",
         "FieldOnlyNumberMinLength6":"Numbers only and at least 6 characters."
+    },
+    "Error":
+    {
+        "BookingNotAvailable":"The reservation is not available."
     }
 }

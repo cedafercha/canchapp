@@ -12,6 +12,7 @@ import { EventDTO } from '../../models/event.model';
 import { BookingDTO } from '../../models/booking.model';
 import { BookingService } from '../../services/booking.service';
 import { Subscription } from 'rxjs';
+import { CodeErrorEnum, NotificationService } from 'commons-lib';
 
 declare var bootstrap: any;
 
@@ -26,9 +27,10 @@ export class CalendarComponent implements OnInit {
 
   private readonly subscription: Subscription = new Subscription();
   @ViewChild('appEvent', { static: true}) appEvent!: EventComponent;
-  modalTest: any;
-  dateTimeStart: Date = new Date();
-  dateTimeEnd: Date = new Date();
+  eventModal: any;
+  dateTimeStart?: string;
+  dateTimeEnd?: string;
+  titleModal: string;
 
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -39,6 +41,9 @@ export class CalendarComponent implements OnInit {
     select: (info) => {
       this.handleSelect(info);
     },
+    eventClick: (info) => {
+      this.handleEventClick(info);
+    },
     headerToolbar: {
       left: 'prev,next,today',
       center: 'title',
@@ -48,19 +53,39 @@ export class CalendarComponent implements OnInit {
 
   constructor(
     public translate: TranslateService,
-    private readonly bookingService: BookingService) {
+    private readonly bookingService: BookingService,
+    private readonly notificationService: NotificationService) {
+      this.titleModal = '';
 
   }
 
   ngOnInit(): void {
-    this.modalTest = new bootstrap.Modal(document.getElementById('exampleModal'));
+    this.eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
+    this.loadEvents();
+  }
+
+  loadEvents(): void {
+    this.subscription.add(this.bookingService.getEvents().subscribe((events) => {
+      this.calendarOptions.events = events.map(event => ({
+        title: event.nameCustomer,
+        start: event.dateTimeStart,
+        end: event.dateTimeEnd,
+        extendedProps: event
+      }));
+    }));
   }
 
   handleSelect(info: any) {
-    console.log('Rango seleccionado:', info.start, info.end);
-    this.dateTimeStart = info.start;
-    this.dateTimeEnd = info.end;
-    this.modalTest.show();
+    this.titleModal = this.translate.instant("Booking.TitleModalNew");
+    this.dateTimeStart = info.startStr;
+    this.dateTimeEnd = info.endStr;
+    this.eventModal.show();
+  }
+
+  handleEventClick(info: any) {
+    this.titleModal = this.translate.instant("Booking.TitleModalEdit");
+    console.log('Evento seleccionado:', info.event.extendedProps);
+    this.eventModal.show();
   }
 
   public saveEvent() {
@@ -74,8 +99,30 @@ export class CalendarComponent implements OnInit {
       bookingTmp.IsRecurrent = eventTmp.isRecurrent;
       bookingTmp.Observation = eventTmp.observation;
 
-      this.subscription.add(this.bookingService.create(bookingTmp).subscribe( res => {
-        console.log(res);
+      this.subscription.add(this.bookingService.create(bookingTmp).subscribe({
+        next: (data) => {
+          this.notificationService.SuccesNotification(this.translate.instant("Booking.BookingCreated"));
+          this.loadEvents();
+          this.eventModal.hide();
+        },
+        error: (error) => {
+          // Manejo de errores con switch según el código del backend
+          if (error.error?.code) {
+            switch (error.error.code) {
+              case CodeErrorEnum.BookingNotAvailable:
+                this.notificationService.ErrorNotification(this.translate.instant("Error.BookingNotAvailable"));
+                break;
+              case CodeErrorEnum.NotCredit:
+                console.error('Usuario no encontrado.');
+                break;
+  
+              default:
+                console.error('Error no manejado:', error.error.code);
+            }
+          } else {
+            console.error('Error sin código específico:', error.message);
+          }
+        }
       }));
     }
   }

@@ -15,8 +15,8 @@ import { EventDTO } from '../../models/event.model';
 
 export class EventComponent implements OnInit, OnChanges {
 
-  @Input() dateTimeStart: Date = new Date();
-  @Input() dateTimeEnd: Date = new Date();
+  @Input() dateTimeStart?: string;
+  @Input() dateTimeEnd?: string;
 
   public formEvent: FormGroup = new FormGroup({});
   msgSave: string = '';
@@ -33,6 +33,8 @@ export class EventComponent implements OnInit, OnChanges {
     this.formEvent = this.formBuilder.group({
       dateTimeStart: [this.dateTimeStart],
       dateTimeEnd: [this.dateTimeEnd],
+      dateTimeStartISO: [this.dateTimeStart],
+      dateTimeEndISO: [this.dateTimeEnd],
       customer: ['', [Validators.required]],
       court: ['', [Validators.required]],
       isRecurrent: [false],
