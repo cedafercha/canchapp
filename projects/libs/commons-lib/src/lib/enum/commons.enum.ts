@@ -3,7 +3,8 @@ export enum ApiEnum {
     Security = 'http://localhost:5197/api/Security/',
     Company = 'http://localhost:5198/api/Company/',
     Browser = 'http://localhost:5199/api/Browser/',  
-    Select = 'http://localhost:5199/api/Select/',    
+    Select = 'http://localhost:5199/api/Select/',
+    HoliDay = 'http://localhost:5199/api/HoliDay/',
 }
 
 export enum NotificationTypeEnum {

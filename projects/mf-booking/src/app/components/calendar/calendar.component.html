@@ -1,3 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <div class="mb-2">
+      <label for="Court" class="form-label">{{ 'Court.Court' | translate }}</label>
+      <lib-select [selectId]="selectId" (change)="onChangeCourt($event)"></lib-select>
+  </div>
+  </div>
+</div>
 <full-calendar [options]="calendarOptions"></full-calendar>
 
 <!-- Modal -->

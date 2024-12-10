@@ -29,8 +29,8 @@ create(booking: BookingDTO): Observable<BookingDTO> {
     return this.http.post<BookingDTO>(`${this.apiUrl}Create`, booking);
 }
 
-getEvents(): Observable<EventCalendarDTO[]> {
-  return this.http.get<EventCalendarDTO[]>(`${this.apiUrl}GetEvents`);
+getEvents(idCourt: number): Observable<EventCalendarDTO[]> {
+  return this.http.get<EventCalendarDTO[]>(`${this.apiUrl}GetEvents/${idCourt}`);
 }  
 
 //   update(profile: Profile): Observable<Profile> {
