@@ -1,21 +1,42 @@
 <form [formGroup]="formEvent">
-
-  <div class="mb-4">
-    <label class="form-label">{{ 'Booking.DateTimeReservation' | translate }}</label>
-    <div>
-      <ul class="nav nav-pills nav-primary">
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">{{ dateTimeStart | date:'yyyy - MM - dd' }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">{{ dateTimeStart | date:'h : mm' }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">{{ dateTimeEnd | date:'h : mm' }}</a>
-        </li>
-      </ul>
+  <div class="row">
+    <div class="col">
+      <div class="mb-4">
+        <label class="form-label">{{ 'Booking.DateTimeReservation' | translate }}</label>
+        <div>
+          <ul class="nav nav-pills nav-primary">
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStart | date:'yyyy - MM - dd' }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStart | date:'h : mm' }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeEnd | date:'h : mm' }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col" *ngIf="actionState == 2">
+      <label class="form-label"><b>{{ 'Booking.DateTimeReservationNew' | translate }}</b></label>
+      <div>
+        <ul class="nav nav-pills nav-primary">
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStartNew | date:'yyyy - MM - dd' }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStartNew | date:'h : mm' }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeEndNew | date:'h : mm' }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
+
+
 
   <div class="mb-3">
       <label for="CustomerBooking" class="form-label">{{ 'Booking.CustomerBooking' | translate }}</label>

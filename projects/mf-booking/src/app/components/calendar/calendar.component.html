@@ -9,22 +9,20 @@
 <full-calendar [options]="calendarOptions"></full-calendar>
 
 <!-- Modal -->
-<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" #eventModal>
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="eventModalLabel">{{ titleModal }}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <app-event 
-          [dateTimeStart]="dateTimeStart" 
-          [dateTimeEnd]="dateTimeEnd" 
-          #appEvent>
-        </app-event>
+        <app-event [actionState]="actionState" #appEvent></app-event>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="saveEvent()">{{ 'Button.Save' | translate }}</button>
+        <button *ngIf="actionState == 1" type="button" class="btn btn-success" (click)="saveEvent()">{{ 'Button.Save' | translate }}</button>
+        <button *ngIf="actionState == 2" type="button" class="btn btn-success" (click)="updateEvent()">{{ 'Button.Edit' | translate }}</button>
+        <button *ngIf="actionState == 4" type="button" class="btn btn-danger" (click)="deleteEvent()">{{ 'Button.Delete' | translate }}</button>
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ 'Button.Cancel' | translate }}</button>        
       </div>
     </div>

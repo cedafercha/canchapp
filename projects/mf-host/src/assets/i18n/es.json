@@ -45,10 +45,13 @@
         "CustomerBooking":"Cliente de la reserva",
         "Comment":"Comentarios",
         "DateTimeReservation":"Fecha y hora de reserva",
+        "DateTimeReservationNew":"Nueva fecha y hora de reserva",
         "IsRecurringBooking":"¿Reserva recurrente?",
-        "BookingCreated":"Reserva creada correctamente.",
+        "BookingCreated":"Reserva creada correctamente.",        
+        "BookingDeleted":"Reserva eliminada correctamente.",
         "TitleModalNew":"Nueva reserva",
-        "TitleModalEdit":"Edición reserva"
+        "TitleModalEdit":"Edición reserva",
+        "TitleModalDetail":"Detalle reserva"
     },
     "Court":{
         "Court":"Cancha"
@@ -79,6 +82,8 @@
     },
     "Error":
     {
-        "BookingNotAvailable":"La reserva no está disponible."
+        "BookingNotAvailable":"La reserva no está disponible.",
+        "BookingNotFound":"La reserva no existe.",
+        "BookingPaid":"La reserva ya ha sido pagada, no es posible eliminarla."
     }
 }

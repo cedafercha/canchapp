@@ -1,13 +1,15 @@
 import { PaymentStatusEnum, PaymentTypeEnum } from "commons-lib";
 
 export class BookingDTO {
-    DateTimeStart: Date = new Date();
-    DateTimeEnd: Date = new Date();
-    IdCustomer?: number;
-    IdCourt: number = -1;    
-    PaymentStatus: PaymentStatusEnum = PaymentStatusEnum.Pending;
-    PaymentType: PaymentTypeEnum = PaymentTypeEnum.Cash;
-    IsRecurrent: boolean = false;
-    Observation: string = '';
-    dateCreated: Date = new Date();
+    idBooking?: number;
+    dateTimeStart: Date = new Date();
+    dateTimeEnd: Date = new Date();
+    idCustomer?: number;
+    idCourt: number = -1;    
+    paymentStatus: PaymentStatusEnum = PaymentStatusEnum.Pending;
+    paymentType: PaymentTypeEnum = PaymentTypeEnum.Cash;
+    isRecurrent: boolean = false;
+    observation: string = '';
+    dateCreated: string = new Date().toISOString();
+    dateUpdated: string = new Date().toISOString();
 }
