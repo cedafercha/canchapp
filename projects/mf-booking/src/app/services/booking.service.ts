@@ -10,31 +10,25 @@ import { EventCalendarDTO } from '../models/eventCalendar.interface';
 })
 export class BookingService {
 
-apiUrl: string = ApiEnum.Booking;
+  apiUrl: string = ApiEnum.Booking;
 
-constructor(private readonly http: HttpClient) {
-}
+  constructor(private readonly http: HttpClient) {
+  }
 
-//   findAll(): Observable<Profile[]> {
-//     const options = { headers: this.headers };
-//     return this.http.get<Profile[]>('http://localhost:3000/api/v1/profile/findAll', options );
-//   }
+  create(booking: BookingDTO): Observable<BookingDTO> {
+      return this.http.post<BookingDTO>(`${this.apiUrl}Create`, booking);
+  }
 
-//   find(profileId: string): Observable<Profile> {
-//     const options = { headers: this.headers };
-//     return this.http.get<Profile>(`http://localhost:3000/api/v1/profile/find/${profileId}`, options );
-//   }
+  getEvents(idCourt: number): Observable<EventCalendarDTO[]> {
+    return this.http.get<EventCalendarDTO[]>(`${this.apiUrl}GetEvents/${idCourt}`);
+  }  
 
-create(booking: BookingDTO): Observable<BookingDTO> {
-    return this.http.post<BookingDTO>(`${this.apiUrl}Create`, booking);
-}
+  update(booking: BookingDTO): Observable<BookingDTO> {
+    return this.http.put<BookingDTO>(`${this.apiUrl}Update`, booking);
+  }
 
-getEvents(idCourt: number): Observable<EventCalendarDTO[]> {
-  return this.http.get<EventCalendarDTO[]>(`${this.apiUrl}GetEvents/${idCourt}`);
-}  
+  delete(idBooking: number): Observable<number> {
+    return this.http.delete<number>(`${this.apiUrl}Delete/${idBooking}`);
+  }
 
-//   update(profile: Profile): Observable<Profile> {
-//     const options = { headers: this.headers };
-//     return this.http.post<Profile>(`http://localhost:3000/api/v1/profile/update`, profile, options );
-//   }
 }

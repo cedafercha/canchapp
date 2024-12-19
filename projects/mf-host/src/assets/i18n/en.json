@@ -55,10 +55,13 @@
         "CustomerBooking":"Reservation client",
         "Comment":"Comment",
         "DateTimeReservation":"Date and time of reservation",
+        "DateTimeReservationNew":"New date and time of reservation",
         "IsRecurringBooking":"Recurring booking?",
         "BookingCreated":"Reservation created successfully.",
+        "BookingDeleted":"Reservation deleted successfully.",
         "TitleModalNew":"New booking",
-        "TitleModalEdit":"Edit booking"
+        "TitleModalEdit":"Edit booking",
+        "TitleModalDetail":"Detail booking"
     },
     "Court":{
         "Court":"Cancha"
@@ -78,6 +81,8 @@
     },
     "Error":
     {
-        "BookingNotAvailable":"The reservation is not available."
+        "BookingNotAvailable":"The reservation is not available.",
+        "BookingNotFound":"The reservation does not exist.",
+        "BookingPaid":"The reservation has already been paid, it is not possible to delete it."
     }
 }

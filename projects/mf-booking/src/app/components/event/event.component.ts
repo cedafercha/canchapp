@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, Input, input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { BrowserComponent, BrowserIdEnum, SelectComponent, SelectIdEnum } from 'commons-lib';
+import { ActionEnum, BrowserComponent, BrowserIdEnum, SelectComponent, SelectIdEnum } from 'commons-lib';
 import { EventDTO } from '../../models/event.model';
 
 @Component({
@@ -13,15 +13,15 @@ import { EventDTO } from '../../models/event.model';
   styleUrl: './event.component.css'
 })
 
-export class EventComponent implements OnInit, OnChanges {
-
-  @Input() dateTimeStart?: string;
-  @Input() dateTimeEnd?: string;
+export class EventComponent implements OnInit {
 
   public formEvent: FormGroup = new FormGroup({});
   msgSave: string = '';
   browserId: BrowserIdEnum;
   selectId: SelectIdEnum;
+  eventEdit: EventDTO = new EventDTO();
+
+  @Input() actionState: ActionEnum = ActionEnum.None;
 
   constructor(private readonly formBuilder: FormBuilder) {
     this.browserId = BrowserIdEnum.BrowserCustomer;
@@ -31,24 +31,15 @@ export class EventComponent implements OnInit, OnChanges {
   ngOnInit(): void {
 
     this.formEvent = this.formBuilder.group({
-      dateTimeStart: [this.dateTimeStart],
-      dateTimeEnd: [this.dateTimeEnd],
-      dateTimeStartISO: [this.dateTimeStart],
-      dateTimeEndISO: [this.dateTimeEnd],
+      dateTimeStart: [this.eventEdit.dateTimeStart],
+      dateTimeEnd: [this.eventEdit.dateTimeEnd],
+      dateTimeStartNew: [this.eventEdit.dateTimeStart],
+      dateTimeEndNew: [this.eventEdit.dateTimeEnd],
       customer: ['', [Validators.required]],
-      court: ['', [Validators.required]],
+      court: ['-1', [Validators.required]],
       isRecurrent: [false],
       observation: ['']
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['dateTimeStart'] && this.formEvent) {
-      this.formEvent.get('dateTimeStart')?.setValue(this.dateTimeStart);
-    }
-    if (changes['dateTimeEnd'] && this.formEvent) {
-      this.formEvent.get('dateTimeEnd')?.setValue(this.dateTimeEnd);
-    }
   }
 
   get autocompleteCustomer(): FormControl {
@@ -63,14 +54,20 @@ export class EventComponent implements OnInit, OnChanges {
     this.formEvent.markAllAsTouched();
     if(this.formEvent.valid) {
       const eventTmp: EventDTO = this.formEvent.value as EventDTO;
+      if(this.eventEdit.idBooking > 0) {
+        eventTmp.idBooking = this.eventEdit.idBooking;
+        eventTmp.dateTimeStart = eventTmp.dateTimeStartNew;
+        eventTmp.dateTimeEnd = eventTmp.dateTimeEndNew;
+      }
+      
       return eventTmp;
     }
     return null;
   }
 
-  getCountry(): void {
-    this.selectCourt.disable();
-    console.log(this.autocompleteCustomer.value);
+  loadEvent(event: EventDTO): void {
+    this.eventEdit = event;
+    this.formEvent.patchValue(event);
   }
 
 }
