@@ -29,14 +29,16 @@ export enum PlacementAlignEnum {
 }
 
 export enum PaymentTypeEnum {
-	Cash = 0,
-	Debit = 1,
-    Credit = 2
+    None = 0,
+	Cash = 1,
+	Debit = 2,
+    Credit = 3
 }
 
 export enum PaymentStatusEnum {
-    Pending = 0,
-    Paid = 1
+    None = 0,
+    Pending = 1,
+    Paid = 2
 }
 
 export enum BrowserIdEnum {
@@ -60,5 +62,6 @@ export enum CodeErrorEnum {
     /* Error Reservas  */
 	BookingNotAvailable = 101,
     BookingNotFound = 102,
-    BookingPaid = 103
+    BookingPaid = 103,
+    BookingDateStartMustBeGreater = 104,
 }
