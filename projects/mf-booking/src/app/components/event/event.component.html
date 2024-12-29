@@ -1,6 +1,6 @@
 <form [formGroup]="formEvent">
   <div class="row">
-    <div class="col">
+    <div class="col-6">
       <div class="mb-4">
         <label class="form-label">{{ 'Booking.DateTimeReservation' | translate }}</label>
         <div>
@@ -9,34 +9,48 @@
               <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStart | date:'yyyy - MM - dd' }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStart | date:'h : mm' }}</a>
+              <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStart | date:'h : mm a' }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeEnd | date:'h : mm' }}</a>
+              <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeEnd | date:'h : mm a' }}</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="col" *ngIf="actionState == 2">
+    <div class="col-6" *ngIf="actionState == 2">
       <label class="form-label"><b>{{ 'Booking.DateTimeReservationNew' | translate }}</b></label>
-      <div>
-        <ul class="nav nav-pills nav-primary">
-          <li class="nav-item">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-4">
             <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStartNew | date:'yyyy - MM - dd' }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeStartNew | date:'h : mm' }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">{{ eventEdit.dateTimeEndNew | date:'h : mm' }}</a>
-          </li>
-        </ul>
+          </div>
+          <div class="col-12 col-md-4 p-0">
+            <input type="time" class="form-control w-100" formControlName="timeStart" id="timeStart" />
+            <div *ngIf="formEvent.controls['timeStart']?.invalid && formEvent.controls['timeStart']?.touched" class="text-danger">
+              <small *ngIf="formEvent.controls['timeStart']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 p-0">
+            <input type="time" class="form-control w-100" formControlName="timeEnd" id="timeEnd" />
+            <div *ngIf="formEvent.controls['timeEnd']?.invalid && formEvent.controls['timeEnd']?.touched" class="text-danger">
+              <small *ngIf="formEvent.controls['timeEnd']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="formEvent.errors?.['invalidTimeOrder']" class="text-danger">
+          <small>{{ 'Booking.StartTimeMustBeGreater' | translate }}</small>
+        </div>
       </div>
     </div>
   </div>
 
-
+  <div class="mb-3">
+    <div class="form-check form-switch" title="{{'Tooltip.RecurringBooking' | translate }}">
+      <input formControlName="isRecurrent" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" aria-checked="false" />
+      <label class="form-check-label" for="flexSwitchCheckDefault">{{ 'Booking.IsRecurringBooking' | translate }}</label>
+    </div>
+  </div>
 
   <div class="mb-3">
       <label for="CustomerBooking" class="form-label">{{ 'Booking.CustomerBooking' | translate }}</label>
@@ -54,11 +68,14 @@
     </div>
   </div>
 
-  <div class="mb-3">
-    <div class="form-check form-switch" title="{{'Tooltip.RecurringBooking' | translate }}">
-      <input formControlName="isRecurrent" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" aria-checked="false" />
-      <label class="form-check-label" for="flexSwitchCheckDefault">{{ 'Booking.IsRecurringBooking' | translate }}</label>
-    </div>
+  <div class="mb-3" *ngIf="actionState == 3">
+    <label for="paymentType" class="form-label">{{ 'Booking.PaymentType' | translate }}</label>
+    <select id="paymentType" class="form-select" formControlName="paymentType" #paymentType>
+      <option value="0">{{ 'Select.SelectOption' | translate }}</option>
+      <option value="1">{{ 'Booking.Cash' | translate }}</option>
+      <option value="2">{{ 'Booking.TDebit' | translate }}</option>
+      <option value="3">{{ 'Booking.TCredit' | translate }}</option>
+    </select>
   </div>
 
   <div class="mb-2">

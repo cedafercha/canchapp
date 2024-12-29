@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FullCalendarModule } from '@fullcalendar/angular';
+import { FullCalendarComponent, FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -17,6 +17,7 @@ import { HoliDayService } from '../../services/holiDay.service';
 import { CustomerDTO } from '../../models/customer.model';
 import { CourtDTO } from '../../models/court.model';
 import { CommonModule } from '@angular/common';
+import { EventImpl } from '@fullcalendar/core/internal';
 
 declare let bootstrap: any;
 
@@ -31,9 +32,12 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
 
   @ViewChild('appEvent', { static: true}) eventComponent!: EventComponent;
   @ViewChild('eventModal', { static: true}) modalElement!: ElementRef;
+  @ViewChild('eventConfirmModal', { static: true}) modalConfirmElement!: ElementRef;
+  @ViewChild('calendar') calendar!: FullCalendarComponent;
 
-  private readonly subscription: Subscription = new Subscription();  
+  private readonly subscription: Subscription = new Subscription();
   eventModal: any;
+  eventConfirmModal: any;
   dateTimeStart?: string;
   dateTimeEnd?: string;
   titleModal: string;
@@ -97,6 +101,8 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
 
   ngAfterViewInit(): void {
     this.eventModal = new bootstrap.Modal(this.modalElement.nativeElement);
+    this.eventConfirmModal = new bootstrap.Modal(this.modalConfirmElement.nativeElement);
+
     this.modalElement.nativeElement.addEventListener('hidden.bs.modal', () => {
       this.actionState = ActionEnum.None;
       this.loadEvents(-1);
@@ -108,10 +114,11 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
       this.bookingService.getEvents(idCourt).subscribe((events) => {
         this.disabledDays = [];
         this.calendarOptions.events = events.map(event => ({
-        title: event.nameCustomer,
-        start: event.dateTimeStart,
-        end: event.dateTimeEnd,
-        extendedProps: event
+          id: event.idBooking.toString(),
+          title: event.nameCustomer,
+          start: event.dateTimeStart,
+          end: event.dateTimeEnd,
+          extendedProps: event
         }));
     }));
   }
@@ -152,47 +159,25 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
       info.revert();
       return
     }
+
     this.titleModal = this.translate.instant("Booking.TitleModalEdit");
     this.actionState = ActionEnum.Edit;
-    let eventEdit: EventDTO = new EventDTO();
-    eventEdit.dateTimeStartNew = info.event.startStr;
-    eventEdit.dateTimeEndNew = info.event.endStr;
-    eventEdit.idBooking = info.oldEvent.extendedProps.idBooking;    
-    eventEdit.dateTimeStart = info.oldEvent.extendedProps.dateTimeStart;
-    eventEdit.dateTimeEnd = info.oldEvent.extendedProps.dateTimeEnd;
-    eventEdit.paymentStatus = info.oldEvent.extendedProps.paymentStatus;
-    eventEdit.paymentType = info.oldEvent.extendedProps.paymentType;
-    eventEdit.customer = new CustomerDTO();
-    eventEdit.customer.id = info.oldEvent.extendedProps.idCustomer;
-    eventEdit.customer.text = info.oldEvent.extendedProps.nameCustomer;
-    eventEdit.court = new CourtDTO();
-    eventEdit.court.id = info.oldEvent.extendedProps.idCourt;
-    eventEdit.court.text = info.oldEvent.extendedProps.nameCourt;
-    eventEdit.observation = info.oldEvent.extendedProps.observation;    
-
-    this.showEventmodal(eventEdit);
+    let eventEdit = this.getEvent(info.event.id);
+    
+    if(eventEdit) {
+      eventEdit.dateTimeStartNew = info.event.startStr;
+      eventEdit.dateTimeEndNew = info.event.endStr;
+      this.showEventmodal(eventEdit);
+    }
   }
 
   handleEventClick(info: any) {
     this.titleModal = this.translate.instant("Booking.TitleModalDetail");
-    this.actionState = ActionEnum.Delete;
-    let eventDetail: EventDTO = new EventDTO();
-    eventDetail.dateTimeStart = info.event.startStr;
-    eventDetail.dateTimeEnd = info.event.endStr;
-    eventDetail.idBooking = info.event.extendedProps.idBooking;    
-    eventDetail.dateTimeStart = info.event.extendedProps.dateTimeStart;
-    eventDetail.dateTimeEnd = info.event.extendedProps.dateTimeEnd;
-    eventDetail.paymentStatus = info.event.extendedProps.paymentStatus;
-    eventDetail.paymentType = info.event.extendedProps.paymentType;
-    eventDetail.customer = new CustomerDTO();
-    eventDetail.customer.id = info.event.extendedProps.idCustomer;
-    eventDetail.customer.text = info.event.extendedProps.nameCustomer;
-    eventDetail.court = new CourtDTO();
-    eventDetail.court.id = info.event.extendedProps.idCourt;
-    eventDetail.court.text = info.event.extendedProps.nameCourt;
-    eventDetail.observation = info.event.extendedProps.observation
-    
-    this.showEventmodal(eventDetail);
+    this.actionState = ActionEnum.Detail;
+    const eventDetail = this.getEvent(info.event.id);
+
+    if(eventDetail)
+      this.showEventmodal(eventDetail);
   }
 
   handleDatesSet(info: any) {
@@ -201,9 +186,37 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
     this.loadHoliDay(year);
   }
 
+  getEvent(id: string): EventDTO | null {
+    let eventTmp: EventImpl | null = this.calendar.getApi().getEventById(id);
+
+    if(eventTmp) {
+      let eventDetail: EventDTO = new EventDTO();
+      eventDetail.idBooking = eventTmp.extendedProps['idBooking'];    
+      eventDetail.dateTimeStart = eventTmp.extendedProps['dateTimeStart'];
+      eventDetail.dateTimeEnd = eventTmp.extendedProps['dateTimeEnd'];      
+      eventDetail.paymentStatus = eventTmp.extendedProps['paymentStatus'];
+      eventDetail.paymentType = eventTmp.extendedProps['paymentType'];
+      eventDetail.observation = eventTmp.extendedProps['observation']
+      eventDetail.customer = new CustomerDTO();
+      eventDetail.customer.id = eventTmp.extendedProps['idCustomer'];
+      eventDetail.customer.text = eventTmp.extendedProps['nameCustomer'];
+      eventDetail.court = new CourtDTO();
+      eventDetail.court.id = eventTmp.extendedProps['idCourt'];
+      eventDetail.court.text = eventTmp.extendedProps['nameCourt'];      
+      return eventDetail;
+    }
+
+    return null;
+  }
+
   showEventmodal(event: EventDTO) {
     this.eventComponent.loadEvent(event);
     this.eventModal.show();
+  }
+
+  showEventConfirmModal() {
+    this.eventModal.hide();
+    this.eventConfirmModal.show();
   }
 
   getBooking(): BookingDTO | null {
@@ -217,6 +230,7 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
       booking.idCourt = eventTmp.court.id      
       booking.isRecurrent = eventTmp.isRecurrent;
       booking.observation = eventTmp.observation;
+      booking.paymentType = eventTmp.paymentType;
       return booking;
     }
     return null;
@@ -266,7 +280,10 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
             switch (error.error.code) {
               case CodeErrorEnum.BookingNotAvailable:
                 this.notificationService.ErrorNotification(this.translate.instant("Error.BookingNotAvailable"));
-                break;  
+                break;
+              case CodeErrorEnum.BookingDateStartMustBeGreater:
+                this.notificationService.ErrorNotification(this.translate.instant("Error.BookingDateStartMustBeGreater"));
+                break;
               default:
                 console.error('Error no manejado:', error.error.code);
             }
@@ -280,8 +297,8 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
 
   deleteEvent(): void {
     const booking: BookingDTO | null = this.getBooking();
-    if(booking!.idBooking!) {
-      this.subscription.add(this.bookingService.delete(booking!.idBooking!).subscribe({
+    if(booking!.idBooking) {
+      this.subscription.add(this.bookingService.delete(booking!.idBooking).subscribe({
         next: (data) => {
           this.notificationService.SuccesNotification(this.translate.instant("Booking.BookingCreated"));
           this.actionState = ActionEnum.None;
