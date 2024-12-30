@@ -6,6 +6,7 @@ import { ProfilePageComponent } from './page/profile/profile.page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'company', pathMatch: 'full'},
+  {path: '**', redirectTo: 'company', pathMatch: 'full'},
   {path: 'company', component: CompanyPageComponent },
   {path: 'company/:id', component: CompanyPageComponent },
   

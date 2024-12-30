@@ -11,7 +11,8 @@
     "serve:ssr:mf-user": "node dist/mf-user/server/server.mjs",
     "serve:ssr:mf-dashboard": "node dist/mf-dashboard/server/server.mjs",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
-    "serve:ssr:mf-company": "node dist/mf-company/server/server.mjs"
+    "serve:ssr:mf-company": "node dist/mf-company/server/server.mjs",
+    "build-libs": "ng build auth-lib && ng build commons-lib"
   },
   "private": true,
   "dependencies": {
@@ -57,5 +58,9 @@
     "ng-packagr": "^17.0.0",
     "ngx-build-plus": "^17.0.0",
     "typescript": "~5.2.2"
+  },
+  "volta": {
+    "node": "20.15.1",
+    "npm": "10.8.2"
   }
 }

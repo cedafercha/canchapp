@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthCredentials } from '../models/login';
+import { AuthCredentials, ICompanyLogin, ILoginToken } from '../models/login';
 import { tap } from 'rxjs/operators';
 import { ApiEnum } from 'commons-lib';
+import { AuthLibService } from 'auth-lib';
 
 @Injectable({
   providedIn: 'root'
@@ -14,30 +15,43 @@ export class AuthService {
 
   constructor(
     private readonly http: HttpClient, 
-    private readonly router: Router) { 
-      
-    }
+    private readonly router: Router,
+    private readonly authLibService: AuthLibService
+  ) {}
 
   Login(auth: AuthCredentials) {
     return this.http.post<any>(`${this.apiUrl}Login`, auth).pipe(
-      tap(response => {
+      tap<ILoginToken>(response => {
         // Almacena el token en localStorage si la autenticación fue exitosa
-        localStorage.setItem('TKCANCHAPP', response.token);
-        // Redirige al dashboard
-        this.router.navigate(['/company']);
+        this.authLibService.setCompanies(response.companies);
+        this.authLibService.setToken(response.token, response.isProvisional);
+        this.redirectLogin(response.isProvisional);
       })
     );
   }
 
+  redirectLogin(isProvisionalToken: boolean): void {
+    // Redirige al multilogin si el token es provisional
+    isProvisionalToken
+      ? this.router.navigate(['/multilogin'])
+      : this.router.navigate(['/company']);
+  }
+
   logout(): void {
     // Elimina el token del almacenamiento y redirige al inicio de sesión
-    localStorage.removeItem('TKCANCHAPP');
+    this.authLibService.logOut();
     this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {
-    // Verifica si el token existe en localStorage
-    return !!localStorage.getItem('TKCANCHAPP');
+    return this.authLibService.isAuthenticated();
   }
 
+  isAuthenticatedMultilogin(): boolean {
+    return this.authLibService.isAuthenticatedMultilogin();
+  }
+
+  getCompaniesLogin(): ICompanyLogin[] {
+    return this.authLibService.getCompanies<ICompanyLogin[]>();
+  }
 }

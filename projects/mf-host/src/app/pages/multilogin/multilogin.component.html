@@ -1,0 +1,57 @@
+<main class="d-flex w-100">
+    <div class="container d-flex flex-column">
+      <div class="row vh-100">
+        <div class="col-sm-10 col-md-8 col-lg-12 mx-auto d-table h-100">
+            <div class="d-table-cell align-middle">
+  
+              <div class="text-center mt-4">
+                <h1 class="h2">{{ 'Login.WelcomeCanchapp' | translate }}</h1>
+                <p class="lead">
+                  {{ 'Login.MultiloginWelcome' | translate }}
+                </p>
+
+                <div class="card">
+                    <div class="card-body">
+                      <div class="m-sm-4">
+                        <div class="row align-items-center">
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">{{ 'Title.Company' | translate }}</th>
+                                    <th scope="col">{{ 'Title.Role' | translate }}</th>
+                                    <th scope="col"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @for (company of companies; track company; let index = $index) {
+                                        <tr>
+                                            <td>{{ index + 1 }}</td>
+                                            <td>{{ company.companyName }}</td>
+                                            <td>{{ company.roleName || 'Title.AdminRole' | translate }}</td>
+                                            <td>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-lg btn-primary"
+                                                    (click)="login(company.email, company.tenantId)"
+                                                >
+                                                    {{ 'Login.SignIn' | translate }}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                    @empty {
+                                        <td colspan="4">{{ 'Commons.ElementsNotFound' | translate }}</td>
+                                    }
+                                </tbody>
+                              </table>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</main>

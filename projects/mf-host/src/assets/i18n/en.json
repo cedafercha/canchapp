@@ -4,11 +4,14 @@
         "Email":"Email",
         "Password":"Password",
         "MessageSuccessSaveNoti":"Successfully saved.",
-        "MessageSuccessRemoveNoti":"Successfully removed."
+        "MessageSuccessRemoveNoti":"Successfully removed.",
+        "ElementsNotFound":"Elements not found."
     },
     "Title":
     {
-        "Company":"Company"        
+        "Company":"Company",
+        "Role":"Role",
+        "AdminRole":"Administrator"
     },
     "Browser":
     {
@@ -30,6 +33,7 @@
     "Login":
     {
         "WelcomeCanchapp": "Welcome Canchapp",
+        "MultiloginWelcome":"Select the company to log in",
         "SignInContinue": "Sign in to your account to continue",
         "ForgotPassword": "Forgot password?",
         "EnterPassword": "Enter your password",

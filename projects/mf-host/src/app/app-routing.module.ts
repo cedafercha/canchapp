@@ -6,7 +6,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { authGuard } from './guards/authGuard.guard';
+import { authGuard, authGuardMultilogin } from './guards/authGuard.guard';
+import { MultiLoginComponent } from './pages/multilogin/multilogin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},  
@@ -17,6 +18,11 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      {
+        path: 'multilogin',
+        component: MultiLoginComponent,
+        canActivate: [authGuardMultilogin]
+      }
     ]
   },
   {
