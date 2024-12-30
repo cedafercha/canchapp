@@ -29,7 +29,10 @@
         "Save":"Guardar",
         "Edit":"Editar",
         "Delete":"Eliminar",
-        "Cancel":"Cancelar"
+        "Cancel":"Cancelar",
+        "Pay":"Pago",
+        "Yes":"Si",
+        "No":"No"
     },
     "Company":{
         "Name":"Nombre de la Compañía",
@@ -52,9 +55,17 @@
         "IsRecurringBooking":"¿Reserva recurrente?",
         "BookingCreated":"Reserva creada correctamente.",        
         "BookingDeleted":"Reserva eliminada correctamente.",
+        "BookingPaid":"Pago de reserva actualizado.",
         "TitleModalNew":"Nueva reserva",
         "TitleModalEdit":"Edición reserva",
-        "TitleModalDetail":"Detalle reserva"
+        "TitleModalDetail":"Detalle reserva",
+        "TitleModalPayBooking":"Pago de reserva",
+        "ConfirmBooking":"¿Está seguro de eliminar esta reserva?",
+        "PaymentType":"Forma de pago",
+        "Cash":"Efectivo",
+        "TDebit":"T. Debito",
+        "TCredit":"T. Credito",
+        "StartTimeMustBeGreater":"La hora de inicio debe ser mayor que la hora de finalización."
     },
     "Court":{
         "Court":"Cancha"
@@ -88,6 +99,7 @@
     {
         "BookingNotAvailable":"La reserva no está disponible.",
         "BookingNotFound":"La reserva no existe.",
-        "BookingPaid":"La reserva ya ha sido pagada, no es posible eliminarla."
+        "BookingPaid":"La reserva ya ha sido pagada, no es posible eliminarla.",
+        "BookingDateStartMustBeGreater":"La hora inicio debe ser mayor que la hora finalización."
     }
 }

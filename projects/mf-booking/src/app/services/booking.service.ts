@@ -31,4 +31,8 @@ export class BookingService {
     return this.http.delete<number>(`${this.apiUrl}Delete/${idBooking}`);
   }
 
+  updatePay(booking: BookingDTO): Observable<number> {
+    return this.http.put<number>(`${this.apiUrl}UpdatePay`, booking);
+  }
+
 }

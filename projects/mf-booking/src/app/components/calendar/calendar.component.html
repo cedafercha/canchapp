@@ -6,10 +6,10 @@
   </div>
   </div>
 </div>
-<full-calendar [options]="calendarOptions"></full-calendar>
+<full-calendar [options]="calendarOptions" #calendar></full-calendar>
 
-<!-- Modal -->
-<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" #eventModal>
+<!-- Modal Reserva -->
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" #eventModal>
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -21,9 +21,27 @@
       </div>
       <div class="modal-footer">
         <button *ngIf="actionState == 1" type="button" class="btn btn-success" (click)="saveEvent()">{{ 'Button.Save' | translate }}</button>
-        <button *ngIf="actionState == 2" type="button" class="btn btn-success" (click)="updateEvent()">{{ 'Button.Edit' | translate }}</button>
-        <button *ngIf="actionState == 4" type="button" class="btn btn-danger" (click)="deleteEvent()">{{ 'Button.Delete' | translate }}</button>
+        <button *ngIf="actionState == 3 || actionState == 2" type="button" class="btn btn-success" (click)="updateEvent()">{{ 'Button.Edit' | translate }}</button>
+        <button *ngIf="actionState == 3" type="button" class="btn btn-danger" (click)="showEventConfirmModal()">{{ 'Button.Delete' | translate }}</button>
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ 'Button.Cancel' | translate }}</button>        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal confirmar eliminado Reserva -->
+<div class="modal" tabindex="-1" role="dialog" #eventConfirmModal>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'Booking.ConfirmBooking' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="deleteEvent()">{{ 'Button.Yes' | translate }}</button> 
+      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ 'Button.No' | translate }}</button>
       </div>
     </div>
   </div>
