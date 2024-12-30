@@ -15,3 +15,19 @@ export const authGuard: CanActivateFn = (route, state) => {
   }
   
 };
+
+export const authGuardMultilogin: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (authService.isAuthenticatedMultilogin()) {
+    return true;  // Permite el acceso si el usuario está autenticado
+  } else if (authService.isAuthenticated()) {
+    router.navigate(['/company']);  // Redirige a la página de la empresa
+    return false;
+  }
+  else {
+    router.navigate(['/login']);  // Redirige a la página de inicio de sesión si no está autenticado
+    return false;
+  }
+};

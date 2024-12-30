@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MultiLoginComponent } from './pages/multilogin/multilogin.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FootComponent } from './components/foot/foot.component';
@@ -26,6 +27,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppComponent,
     HomeComponent,
     LoginComponent,
+    MultiLoginComponent,
     SidebarComponent,
     NavbarComponent,
     FootComponent,

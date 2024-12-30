@@ -5,11 +5,14 @@
         "Password":"Contraseña",
         "MessageErrorNoti":"Al parecer hubo un error, intente mas tarde por favor.",
         "MessageSuccessSaveNoti":"Guardado con exito.",
-        "MessageSuccessRemoveNoti":"Eliminado con exito."
+        "MessageSuccessRemoveNoti":"Eliminado con exito.",
+        "ElementsNotFound":"No se encontraron elementos."
     },
     "Title":
     {
-        "Company":"Empresa"        
+        "Company":"Empresa",
+        "Role":"Rol",
+        "AdminRole":"Administrador"
     },
     "Browser":
     {
@@ -70,6 +73,7 @@
     "Login":
     {
         "WelcomeCanchapp":"Bienvenido a Canchapp",
+        "MultiloginWelcome":"Selecciona una empresa para iniciar sesión",
         "SignInContinue":"Inicie sesión en su cuenta para continuar",
         "ForgotPassword": "¿Has olvidado tu contraseña?",
         "EnterPassword": "Ingresa tu contraseña",
