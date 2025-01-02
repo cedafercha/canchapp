@@ -54,15 +54,15 @@ const routes: Routes = [
         
       },
       { 
-        path: 'court', 
+        path: 'catalog', 
         canActivate: [authGuard],
         loadChildren: () => 
           loadRemoteModule({
             type: 'module',
             remoteEntry: 'http://localhost:4204/remoteEntry.js',
-            exposedModule: './CourtModule'
+            exposedModule: './CatalogModule'
           })
-          .then(m => m.CourtModule)
+          .then(m => m.CatalogModule)
         
       },
       { 
