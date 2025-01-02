@@ -35,7 +35,7 @@
 							"projects/mf-host/src/favicon.ico",
 							"projects/mf-host/src/assets"
 						],
-						"styles": [							
+						"styles": [
 							"projects/mf-host/src/assets/css/bootstrap.min.css",
 							"projects/mf-host/src/assets/css/plugins.min.css",
 							"projects/mf-host/src/assets/css/kaiadmin.min.css",
@@ -44,7 +44,7 @@
 							"projects/mf-host/src/styles.scss"
 						],
 						"scripts": [
-							"projects/mf-host/src/assets/js/core/jquery-3.7.1.min.js",							
+							"projects/mf-host/src/assets/js/core/jquery-3.7.1.min.js",
 							"projects/mf-host/src/assets/js/kaiadmin.min.js",
 							"projects/mf-host/src/assets/js/core/popper.min.js",
 							"projects/mf-host/src/assets/js/core/bootstrap.min.js",
@@ -612,6 +612,105 @@
 						],
 						"styles": [
 							"projects/mf-booking/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"mf-catalog": {
+			"projectType": "application",
+			"root": "projects/mf-catalog",
+			"sourceRoot": "projects/mf-catalog/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/mf-catalog",
+						"index": "projects/mf-catalog/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/mf-catalog/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/mf-catalog/src/favicon.ico",
+							"projects/mf-catalog/src/assets"
+						],
+						"styles": [
+							"projects/mf-catalog/src/styles.scss"
+						],
+						"scripts": [],
+						"main": "projects/mf-catalog/src/main.ts",
+						"extraWebpackConfig": "projects/mf-catalog/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mf-catalog/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "mf-catalog:build:production",
+							"extraWebpackConfig": "projects/mf-catalog/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "mf-catalog:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4204,
+						"publicHost": "http://localhost:4204",
+						"extraWebpackConfig": "projects/mf-catalog/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"buildTarget": "mf-catalog:build",
+						"extraWebpackConfig": "projects/mf-catalog/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/mf-catalog/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/mf-catalog/src/favicon.ico",
+							"projects/mf-catalog/src/assets"
+						],
+						"styles": [
+							"projects/mf-catalog/src/styles.scss"
 						],
 						"scripts": []
 					}
