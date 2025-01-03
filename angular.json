@@ -716,6 +716,105 @@
 					}
 				}
 			}
+		},
+		"mf-report": {
+			"projectType": "application",
+			"root": "projects/mf-report",
+			"sourceRoot": "projects/mf-report/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/mf-report",
+						"index": "projects/mf-report/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/mf-report/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/mf-report/src/favicon.ico",
+							"projects/mf-report/src/assets"
+						],
+						"styles": [
+							"projects/mf-report/src/styles.scss"
+						],
+						"scripts": [],
+						"main": "projects/mf-report/src/main.ts",
+						"extraWebpackConfig": "projects/mf-report/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mf-report/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "mf-report:build:production",
+							"extraWebpackConfig": "projects/mf-report/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "mf-report:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4206,
+						"publicHost": "http://localhost:4206",
+						"extraWebpackConfig": "projects/mf-report/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"buildTarget": "mf-report:build",
+						"extraWebpackConfig": "projects/mf-report/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/mf-report/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/mf-report/src/favicon.ico",
+							"projects/mf-report/src/assets"
+						],
+						"styles": [
+							"projects/mf-report/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
 		}
 	},
 	"cli": {
