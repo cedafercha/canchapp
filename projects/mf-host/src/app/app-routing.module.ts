@@ -76,6 +76,18 @@ const routes: Routes = [
           })
           .then(m => m.BookingModule)
         
+      },
+      { 
+        path: 'report', 
+        canActivate: [authGuard],
+        loadChildren: () => 
+          loadRemoteModule({
+            type: 'module',
+            remoteEntry: 'http://localhost:4206/remoteEntry.js',
+            exposedModule: './ReportModule'
+          })
+          .then(m => m.ReportModule)
+        
       }
     ]
   }  
