@@ -6,7 +6,8 @@
         "MessageErrorNoti":"Al parecer hubo un error, intente mas tarde por favor.",
         "MessageSuccessSaveNoti":"Guardado con exito.",
         "MessageSuccessRemoveNoti":"Eliminado con exito.",
-        "ElementsNotFound":"No se encontraron elementos."
+        "ElementsNotFound":"No se encontraron elementos.",
+        "Action":"Acciones"
     },
     "Title":
     {
@@ -68,6 +69,7 @@
         "StartTimeMustBeGreater":"La hora de inicio debe ser mayor que la hora de finalización."
     },
     "Court":{
+        "CourtList":"Lista de cancha",
         "Court":"Cancha"
     },
     "Login":

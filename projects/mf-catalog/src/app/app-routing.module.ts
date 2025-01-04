@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CourtPageComponent } from './page/court.page/court.page.component';
+import { CatalogListPageComponent } from './page/catalog-list.page/catalog-list.page.component';
+import { CourtListPageComponent } from './page/court-list.page/court-list.page.component';
 
-const routes: Routes = [
-  {path: '', redirectTo: 'court', pathMatch: 'full'},
-  {path: 'court', component: CourtPageComponent },
+const routes: Routes = [  
+  {path: 'list', component: CatalogListPageComponent },
+  {path: 'court-list', component: CourtListPageComponent },
+  {path: '', redirectTo: 'list', pathMatch: 'full'},
+  {path: '**', redirectTo: 'list', pathMatch: 'full'},
 ];
 
 @NgModule({

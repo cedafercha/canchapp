@@ -5,8 +5,8 @@ export enum ApiEnum {
     Browser = 'http://localhost:5199/api/Browser/',  
     Select = 'http://localhost:5199/api/Select/',
     HoliDay = 'http://localhost:5199/api/HoliDay/',
+    Court = 'http://localhost:5199/api/Court/',
 }
-
 export enum NotificationTypeEnum {
 	Succes = 'success',
     Default = 'default',
@@ -16,35 +16,29 @@ export enum NotificationTypeEnum {
     Danger = 'danger',
 	Info = 'info'
 }
-
 export enum PlacementFromEnum {
 	Top = 'top',
 	Bottom = 'bottom'
 }
-
 export enum PlacementAlignEnum {
 	Left = 'left',
 	Right = 'right',
     Center = 'center'
 }
-
 export enum PaymentTypeEnum {
     None = 0,
 	Cash = 1,
 	Debit = 2,
     Credit = 3
 }
-
 export enum PaymentStatusEnum {
     None = 0,
     Pending = 1,
     Paid = 2
 }
-
 export enum BrowserIdEnum {
 	BrowserCustomer = 'BrowserCustomer'
 }
-
 export enum SelectIdEnum {
 	ListCourt = 'ListCourt'
 }
@@ -55,7 +49,6 @@ export enum ActionEnum {
     Detail = 3,
     Delete = 4
 }
-
 export enum CodeErrorEnum {
     /* Error general  */
     InternalServerError = 100,
@@ -64,4 +57,13 @@ export enum CodeErrorEnum {
     BookingNotFound = 102,
     BookingPaid = 103,
     BookingDateStartMustBeGreater = 104,
+}
+export enum ActionEnum {
+	Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6,
+    Sunday = 7
 }

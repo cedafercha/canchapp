@@ -5,7 +5,8 @@
         "Password":"Password",
         "MessageSuccessSaveNoti":"Successfully saved.",
         "MessageSuccessRemoveNoti":"Successfully removed.",
-        "ElementsNotFound":"Elements not found."
+        "ElementsNotFound":"Elements not found.",
+        "Action":"Actions"
     },
     "Title":
     {
@@ -73,13 +74,14 @@
         "TitleModalPayBooking":"Reservation payment",
         "ConfirmBooking":"Are you sure you want to delete this reservation?",
         "PaymentType":"Payment type",
-        "Cash":"Efectivo",
-        "TDebit":"T. Debito",
-        "TCredit":"T. Credito",
+        "Cash":"Cash",
+        "TDebit":"T. Debit",
+        "TCredit":"T. Credit",
         "StartTimeMustBeGreater":"The start time must be greater than the end time."
     },
     "Court":{
-        "Court":"Cancha"
+        "CourtList":"List of courts",
+        "Court":"Court"
     },
     "Tooltip": {
         "RecurringBooking":"This reservation will remain weekly"
