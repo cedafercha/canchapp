@@ -1,0 +1,16 @@
+.card-body {
+    width: 185px;
+    height: 200px;
+}
+.container-icon {
+    height: 140px;
+}
+
+.card .icon-big {
+    font-size: 9rem;
+}
+
+.card .text-muted {
+    font-size: 1rem;
+    white-space: nowrap;
+}
