@@ -30,6 +30,17 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { 
+        path: 'user', 
+        canActivate: [authGuard],
+        loadChildren: () => 
+          loadRemoteModule({
+            type: 'module',
+            remoteEntry: 'http://localhost:4201/remoteEntry.js',
+            exposedModule: './UserModule'
+          })
+          .then(m => m.UserModule)    
+      },
+      { 
         path: 'board',
         canActivate: [authGuard],
         loadChildren: () => 
@@ -38,8 +49,7 @@ const routes: Routes = [
             remoteEntry: 'http://localhost:4202/remoteEntry.js',
             exposedModule: './BoardModule'
           })
-          .then(m => m.BoardModule)
-        
+          .then(m => m.BoardModule)        
       },
       { 
         path: 'company',
@@ -50,8 +60,7 @@ const routes: Routes = [
             remoteEntry: 'http://localhost:4203/remoteEntry.js',
             exposedModule: './CompanyModule'
           })
-          .then(m => m.CompanyModule)
-        
+          .then(m => m.CompanyModule)        
       },
       { 
         path: 'catalog', 
@@ -62,8 +71,7 @@ const routes: Routes = [
             remoteEntry: 'http://localhost:4204/remoteEntry.js',
             exposedModule: './CatalogModule'
           })
-          .then(m => m.CatalogModule)
-        
+          .then(m => m.CatalogModule)        
       },
       { 
         path: 'booking', 
@@ -74,8 +82,7 @@ const routes: Routes = [
             remoteEntry: 'http://localhost:4205/remoteEntry.js',
             exposedModule: './BookingModule'
           })
-          .then(m => m.BookingModule)
-        
+          .then(m => m.BookingModule)        
       },
       { 
         path: 'report', 
@@ -86,8 +93,7 @@ const routes: Routes = [
             remoteEntry: 'http://localhost:4206/remoteEntry.js',
             exposedModule: './ReportModule'
           })
-          .then(m => m.ReportModule)
-        
+          .then(m => m.ReportModule)        
       }
     ]
   }  
