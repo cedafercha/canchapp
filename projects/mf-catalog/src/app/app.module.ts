@@ -5,6 +5,7 @@ import { BrowserModule, provideClientHydration } from "@angular/platform-browser
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { CatalogModule } from './catalog.module';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,12 @@ import { CatalogModule } from './catalog.module';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    CatalogModule
+    CatalogModule,
+    NgxMaskDirective,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideNgxMask()
   ],
   bootstrap: [AppComponent]
 })

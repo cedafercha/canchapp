@@ -6,13 +6,19 @@
         "MessageSuccessSaveNoti":"Successfully saved.",
         "MessageSuccessRemoveNoti":"Successfully removed.",
         "ElementsNotFound":"Elements not found.",
-        "Action":"Actions"
+        "Action":"Actions",
+        "State":"State",
+        "Active":"Active",
+        "Inactive":"Inactive"
     },
     "Title":
     {
         "Company":"Company",
         "Role":"Role",
-        "AdminRole":"Administrator"
+        "AdminRole":"Administrator",
+        "Courts":"Courts",
+        "Users":"Users",
+        "Holidays":"Holidays"
     },
     "Browser":
     {
@@ -28,6 +34,7 @@
     {
         "Save":"Save",
         "Edit":"Edit",
+        "Detail":"Detail",
         "Delete":"Delete",
         "Cancel":"Cancel",
         "Pay":"Pay",
@@ -65,14 +72,14 @@
         "DateTimeReservation":"Date and time of reservation",
         "DateTimeReservationNew":"New date and time of reservation",
         "IsRecurringBooking":"Recurring booking?",
-        "BookingCreated":"Reservation created successfully.",
+        "BookingCreated":"Reservation saved successfully.",
         "BookingDeleted":"Reservation deleted successfully.",
         "BookingPaid":"Reservation payment updated.",
         "TitleModalNew":"New booking",
         "TitleModalEdit":"Edit booking",
         "TitleModalDetail":"Detail booking",
         "TitleModalPayBooking":"Reservation payment",
-        "ConfirmBooking":"Are you sure you want to delete this reservation?",
+        "ConfirmDeleteBooking":"Are you sure you want to delete this reservation?",
         "PaymentType":"Payment type",
         "Cash":"Cash",
         "TDebit":"T. Debit",
@@ -80,8 +87,20 @@
         "StartTimeMustBeGreater":"The start time must be greater than the end time."
     },
     "Court":{
+        "Name":"Nombre",
+        "Description":"Description",
         "CourtList":"List of courts",
-        "Court":"Court"
+        "Court":"Court",
+        "EventColor":"Event color",
+        "NewCourt":"New court",
+        "EditCourt":"Edición cancha",
+        "DetailCourt":"Detalle cancha",
+        "DeleteCourt":"Delete court",
+        "PricePerHour":"Price per hour",
+        "Price":"Price",
+        "CourtCreated":"Court saved successfully.",
+        "CourtDeleted":"Court deleted successfully.",
+        "ConfirmDeleteCourt":"Are you sure you want to delete the "
     },
     "Tooltip": {
         "RecurringBooking":"This reservation will remain weekly"
@@ -101,6 +120,8 @@
         "BookingNotAvailable":"The reservation is not available.",
         "BookingNotFound":"The reservation does not exist.",
         "BookingPaid":"The reservation has already been paid, it is not possible to delete it.",
-        "BookingDateStartMustBeGreater":"The start time must be greater than the end time."
+        "BookingDateStartMustBeGreater":"The start time must be greater than the end time.",
+        "CourtWithRecords":"The court cannot be deleted, there are already associated reservations.",
+        "CourtNotFound":"The court does not exist."
     }
 }

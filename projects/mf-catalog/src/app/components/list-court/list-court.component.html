@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">{{ 'Court.CourtList' | translate }}</div>
+    </div>
+    <div class="card-body">
+        <div class="mb-2">
+            <a routerLink="/catalog/court-new" class="btn btn-success" #btnFoco>{{ 'Court.NewCourt' | translate }}</a>
+        </div>
+        <table class="table table-head-bg-info table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" class="index-column">#</th>
+                    <th scope="col">{{ 'Court.Court' | translate }}</th>
+                    <th scope="col">{{ 'Court.Description' | translate }}</th>                    
+                    <th scope="col">{{ 'Commons.State' | translate }}</th>
+                    <th scope="col" class="action-column text-center">{{ 'Commons.Action' | translate }}</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let court of courts, let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ court.name }}</td>
+                    <td>{{ court.description }}</td>
+                    <td>{{ court.isActive ? ('Commons.Active' | translate) : ('Commons.Inactive' | translate) }}</td>
+                    <td class="text-center">
+                        <a class="link-secondary me-1" routerLink="/catalog/court-edit/{{court.idCourt}}">
+                            {{ 'Button.Edit' | translate }}
+                        </a>
+                        <a class="link-secondary me-1" routerLink="/catalog/court-detail/{{court.idCourt}}">
+                            {{ 'Button.Detail' | translate }}
+                        </a>
+                        <a class="link-secondary" (click)="showDeleteModal(court.idCourt, court.name)">
+                            {{ 'Button.Delete' | translate }}
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" #deleteModal>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ 'Court.DeleteCourt' | translate }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>{{ 'Court.ConfirmDeleteCourt' | translate }} <strong>{{ courtNameSelected }}</strong>? </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="deleteCourt()">{{ 'Button.Yes' | translate }}</button> 
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ 'Button.No' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -18,4 +18,12 @@ export class CommonsLibService {
     const localISOString = `${year}-${month}-${day}T${hours}:${minutes}:00`;
     return localISOString;
   }
+
+  getTime(date: Date | string): string {
+
+    let _date = new Date(date);
+    const hours = _date.getHours().toString().padStart(2, '0');
+    const minutes = _date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}:00`;
+  }
 }

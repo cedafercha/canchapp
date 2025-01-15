@@ -7,13 +7,19 @@
         "MessageSuccessSaveNoti":"Guardado con exito.",
         "MessageSuccessRemoveNoti":"Eliminado con exito.",
         "ElementsNotFound":"No se encontraron elementos.",
-        "Action":"Acciones"
+        "Action":"Acciones",
+        "State":"Estado",
+        "Active":"Activo",
+        "Inactive":"Inactivo"
     },
     "Title":
     {
         "Company":"Empresa",
         "Role":"Rol",
-        "AdminRole":"Administrador"
+        "AdminRole":"Administrador",
+        "Courts":"Canchas",
+        "Users":"Usuarios",
+        "Holidays":"Dias festivos"
     },
     "Browser":
     {
@@ -29,6 +35,7 @@
     {
         "Save":"Guardar",
         "Edit":"Editar",
+        "Detail":"Detalle",
         "Delete":"Eliminar",
         "Cancel":"Cancelar",
         "Pay":"Pago",
@@ -54,14 +61,14 @@
         "DateTimeReservation":"Fecha y hora de reserva",
         "DateTimeReservationNew":"Nueva fecha y hora de reserva",
         "IsRecurringBooking":"¿Reserva recurrente?",
-        "BookingCreated":"Reserva creada correctamente.",        
+        "BookingCreated":"Reserva guardada correctamente.",
         "BookingDeleted":"Reserva eliminada correctamente.",
         "BookingPaid":"Pago de reserva actualizado.",
         "TitleModalNew":"Nueva reserva",
         "TitleModalEdit":"Edición reserva",
         "TitleModalDetail":"Detalle reserva",
         "TitleModalPayBooking":"Pago de reserva",
-        "ConfirmBooking":"¿Está seguro de eliminar esta reserva?",
+        "ConfirmDeleteBooking":"¿Está seguro de eliminar esta reserva?",
         "PaymentType":"Forma de pago",
         "Cash":"Efectivo",
         "TDebit":"T. Debito",
@@ -69,8 +76,20 @@
         "StartTimeMustBeGreater":"La hora de inicio debe ser mayor que la hora de finalización."
     },
     "Court":{
-        "CourtList":"Lista de cancha",
-        "Court":"Cancha"
+        "Name":"Name",
+        "Description":"Descripción",
+        "CourtList":"Lista de canchas",
+        "Court":"Cancha",
+        "EventColor":"Color de evento",
+        "NewCourt":"Nueva cancha",
+        "EditCourt":"Edición cancha",
+        "DetailCourt":"Detalle cancha",
+        "DeleteCourt":"Eliminar cancha",
+        "PricePerHour":"Precio por hora",
+        "Price":"Precio",
+        "CourtCreated":"Cancha guardada correctamente.",        
+        "CourtDeleted":"Cancha eliminada correctamente.",
+        "ConfirmDeleteCourt":"¿Está seguro de eliminar la cancha "
     },
     "Login":
     {
@@ -102,6 +121,8 @@
         "BookingNotAvailable":"La reserva no está disponible.",
         "BookingNotFound":"La reserva no existe.",
         "BookingPaid":"La reserva ya ha sido pagada, no es posible eliminarla.",
-        "BookingDateStartMustBeGreater":"La hora inicio debe ser mayor que la hora finalización."
+        "BookingDateStartMustBeGreater":"La hora inicio debe ser mayor que la hora finalización.",
+        "CourtWithRecords":"La cancha no se puede eliminar, ya existen reservas asociadas.",
+        "CourtNotFound":"La cancha no existe."
     }
 }
