@@ -57,8 +57,11 @@ export enum CodeErrorEnum {
     BookingNotFound = 102,
     BookingPaid = 103,
     BookingDateStartMustBeGreater = 104,
+    /* Error Canchas  */
+	CourtWithRecords = 201,
+    CourtNotFound = 202,
 }
-export enum ActionEnum {
+export enum DayEnum {
 	Monday = 1,
     Tuesday = 2,
     Wednesday = 3,

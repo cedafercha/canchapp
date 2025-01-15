@@ -14,8 +14,20 @@ export class CourtService {
     constructor(private readonly http: HttpClient) {
     }
 
-    getCourts(): Observable<CourtDTO[]> {
-        return this.http.get<CourtDTO[]>(`${this.apiUrl}GetCourt`);
+    getCourtlist(): Observable<CourtDTO[]> {
+        return this.http.get<CourtDTO[]>(`${this.apiUrl}GetCourtList`);
+    }
+
+    upsert(court: CourtDTO): Observable<number> {
+        return this.http.post<number>(`${this.apiUrl}Upsert`, court);
+    }
+
+    getCourtAndRates(idCourt: number): Observable<CourtDTO> {
+        return this.http.get<CourtDTO>(`${this.apiUrl}GetCourtAndRates/${idCourt}`);
+    }
+
+    delete(idCourt: number): Observable<number> {
+        return this.http.delete<number>(`${this.apiUrl}Delete/${idCourt}`);
     }
 
 }

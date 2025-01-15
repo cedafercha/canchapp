@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CourtListComponent } from "../../components/court/list.component";
+import { CourtListComponent } from '../../components/list-court/list-court.component';
 
 @Component({
   selector: 'app-court-list.page',
