@@ -35,4 +35,8 @@ export class BookingService {
     return this.http.put<number>(`${this.apiUrl}UpdatePay`, booking);
   }
 
+  getPrice(day: number, timeBooking: string, idCourt: number,): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}GetCourtPrice/${day}/${timeBooking}/${idCourt}`);
+  }
+
 }

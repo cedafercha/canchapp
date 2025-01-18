@@ -2,19 +2,22 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ActionEnum, BrowserComponent, BrowserIdEnum, CommonsLibService, SelectComponent, SelectIdEnum } from 'commons-lib';
+import { ActionEnum, BrowserComponent, BrowserIdEnum, CommonsLibService, SelectIdEnum } from 'commons-lib';
 import { EventDTO } from '../../models/event.model';
+import { Subscription } from 'rxjs';
+import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [CommonModule, TranslateModule, ReactiveFormsModule, BrowserComponent, SelectComponent],
+  imports: [CommonModule, TranslateModule, ReactiveFormsModule, BrowserComponent],
   templateUrl: './event.component.html',
   styleUrl: './event.component.css'
 })
 
 export class EventComponent implements OnInit, OnChanges {
 
+  private readonly subscription: Subscription = new Subscription();
   public formEvent: FormGroup = new FormGroup({});
   msgSave: string = '';
   browserId: BrowserIdEnum;
@@ -25,6 +28,7 @@ export class EventComponent implements OnInit, OnChanges {
 
   constructor(
     private readonly formBuilder: FormBuilder,
+    private readonly bookingService: BookingService,
     private readonly commonsLibService: CommonsLibService) {
     this.browserId = BrowserIdEnum.BrowserCustomer;
     this.selectId = SelectIdEnum.ListCourt;
@@ -40,12 +44,12 @@ export class EventComponent implements OnInit, OnChanges {
       timeStart: ['', [Validators.required]],
       timeEnd: ['', [Validators.required]],
       customer: ['', [Validators.required]],
-      court: ['-1', [Validators.required]],
+      court: [],
       isRecurrent: [false],
       observation: [''],
-      paymentType: ['0']
-    }, 
-    { validators: this.validateTimeOrder });
+      paymentType: ['0'],
+      price: ['0']	
+    });
   }
 
   private formatTime(date: Date): string {
@@ -78,16 +82,6 @@ export class EventComponent implements OnInit, OnChanges {
     return this.formEvent.get('court') as FormControl;
   }
 
-  validateTimeOrder(control: AbstractControl): { [key: string]: boolean } | null {
-    const timeStart = control.get('timeStart')?.value;
-    const timeEnd = control.get('timeEnd')?.value;
-
-    if (timeStart && timeEnd && timeStart >= timeEnd) {
-      return { invalidTimeOrder: true };
-    }
-    return null;
-  }
-
   getEvent(): EventDTO | null {
     this.formEvent.markAllAsTouched();
     if(this.formEvent.valid) {
@@ -105,13 +99,30 @@ export class EventComponent implements OnInit, OnChanges {
     return null;
   }
 
-  loadEvent(event: EventDTO): void {    
+  loadEvent(event: EventDTO): void {
     this.eventEdit = event;
+    this.getPrice();    
     this.formEvent.patchValue(event);
     const formattedStartTime = this.formatTime(new Date(this.eventEdit.dateTimeStartNew));
     const formattedEndTime = this.formatTime(new Date(this.eventEdit.dateTimeEndNew));
     this.formEvent.get('timeStart')?.setValue(formattedStartTime);
     this.formEvent.get('timeEnd')?.setValue(formattedEndTime);
+  }
+
+  getPrice(): void {
+    const timeBooking = this.commonsLibService.getTime(this.eventEdit.dateTimeStart);
+    this.subscription.add(this.bookingService.getPrice(this.eventEdit.day, timeBooking, this.eventEdit.court.id).subscribe({
+      next: (data: number) => {
+        this.eventEdit.price = data;
+        this.formEvent.controls['price'].setValue(data);
+      },
+      error: (error) => {
+      }
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

@@ -12,4 +12,5 @@ export class BookingDTO {
     observation: string = '';
     dateCreated: string = new Date().toISOString();
     dateUpdated: string = new Date().toISOString();
+    price: number = 0;
 }
