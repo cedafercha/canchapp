@@ -16,4 +16,6 @@ export class EventDTO {
     paymentStatus: PaymentStatusEnum = PaymentStatusEnum.Pending;
     timeStart: string = '';
     timeEnd: string = '';
+    day: number = 0;
+    price: number = 0;
 }

@@ -45,26 +45,34 @@
     </div>
   </div>
 
-  <div class="mb-3">
-    <div class="form-check form-switch" title="{{'Tooltip.RecurringBooking' | translate }}">
-      <input formControlName="isRecurrent" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" aria-checked="false" />
-      <label class="form-check-label" for="flexSwitchCheckDefault">{{ 'Booking.IsRecurringBooking' | translate }}</label>
-    </div>
-  </div>
-
-  <div class="mb-3">
-      <label for="CustomerBooking" class="form-label">{{ 'Booking.CustomerBooking' | translate }}</label>
-      <lib-browser formControlName="customer" [browserId]="browserId"></lib-browser>
-      <div *ngIf="formEvent.controls['customer']?.invalid && formEvent.controls['customer']?.touched" class="text-danger">
-        <small *ngIf="formEvent.controls['customer']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
+  <div class="row">
+    <div class="col-7">
+      <div>
+        <label for="CustomerBooking" class="form-label">{{ 'Booking.CustomerBooking' | translate }}</label>
+        <lib-browser formControlName="customer" [browserId]="browserId"></lib-browser>
+        <div *ngIf="formEvent.controls['customer']?.invalid && formEvent.controls['customer']?.touched" class="text-danger">
+          <small *ngIf="formEvent.controls['customer']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
+        </div>
       </div>
-  </div>
-
-  <div class="mb-3">
-    <label for="Court" class="form-label">{{ 'Court.Court' | translate }}</label>
-    <lib-select formControlName="court" [selectId]="selectId"></lib-select>
-    <div *ngIf="formEvent.controls['court']?.invalid && formEvent.controls['court']?.touched" class="text-danger">
-      <small *ngIf="formEvent.controls['court']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
+    </div>
+    <div class="col-5">      
+      <div class="card card-stats card-info card-round">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-5">
+              <div class="icon-big text-center">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+              </div>
+            </div>
+            <div class="col-7 col-stats">
+              <div class="numbers">
+                <p class="card-category">Precio hora</p>
+                <h4 class="card-title">$ {{ this.eventEdit.price | number:'1.0-0' }}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -76,6 +84,13 @@
       <option value="2">{{ 'Booking.TDebit' | translate }}</option>
       <option value="3">{{ 'Booking.TCredit' | translate }}</option>
     </select>
+  </div>
+
+  <div>
+    <div class="form-check form-switch" title="{{'Tooltip.RecurringBooking' | translate }}">
+      <input formControlName="isRecurrent" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" aria-checked="false" />
+      <label class="form-check-label" for="flexSwitchCheckDefault">{{ 'Booking.IsRecurringBooking' | translate }}</label>
+    </div>
   </div>
 
   <div class="mb-2">

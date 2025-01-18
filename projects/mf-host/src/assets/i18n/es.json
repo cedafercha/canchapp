@@ -123,6 +123,7 @@
         "BookingPaid":"La reserva ya ha sido pagada, no es posible eliminarla.",
         "BookingDateStartMustBeGreater":"La hora inicio debe ser mayor que la hora finalización.",
         "CourtWithRecords":"La cancha no se puede eliminar, ya existen reservas asociadas.",
-        "CourtNotFound":"La cancha no existe."
+        "CourtNotFound":"La cancha no existe.",
+        "PriceMustBeGreaterThanZero":"El precio debe ser mayor a cero."
     }
 }

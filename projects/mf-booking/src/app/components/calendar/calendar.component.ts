@@ -45,6 +45,8 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
   initialLocaleCode = 'es';
   disabledDays: string[] = [];
   actionState: ActionEnum = ActionEnum.None;
+  courtNameSelected: string = '';
+  courtIdSelected: number = -1;
 
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -118,6 +120,8 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
           title: event.nameCustomer,
           start: event.dateTimeStart,
           end: event.dateTimeEnd,
+          backgroundColor: event.color,
+          borderColor: event.color, 
           extendedProps: event
         }));
     }));
@@ -135,7 +139,12 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
   }
 
   onChangeCourt({ target }: any) {
-    this.loadEvents(target.value as number);
+    if(target.value == '-1')
+      return;
+    
+    this.courtIdSelected = target.value as number;
+    this.courtNameSelected = target.selectedOptions[0].text;
+    this.loadEvents(this.courtIdSelected);
   }
 
   handleSelectAllow(info: any): boolean {
@@ -145,11 +154,17 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
   }
 
   handleSelect(info: any) {
+    if(this.courtIdSelected == -1)
+      return;
+
     this.titleModal = this.translate.instant("Booking.TitleModalNew");
     this.actionState = ActionEnum.Create;
     let eventNew: EventDTO = new EventDTO();
     eventNew.dateTimeStart = info.startStr;
     eventNew.dateTimeEnd = info.endStr;
+    eventNew.day = info.start.getDay();
+    eventNew.court = new CourtDTO();
+    eventNew.court.id = this.courtIdSelected;    
     this.showEventmodal(eventNew);
   }
 
@@ -202,7 +217,7 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
       eventDetail.customer.text = eventTmp.extendedProps['nameCustomer'];
       eventDetail.court = new CourtDTO();
       eventDetail.court.id = eventTmp.extendedProps['idCourt'];
-      eventDetail.court.text = eventTmp.extendedProps['nameCourt'];      
+      eventDetail.court.text = eventTmp.extendedProps['nameCourt'];
       return eventDetail;
     }
 
@@ -227,18 +242,26 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
       booking.dateTimeStart = eventTmp.dateTimeStart;
       booking.dateTimeEnd = eventTmp.dateTimeEnd;
       booking.idCustomer = eventTmp.customer?.id;
-      booking.idCourt = eventTmp.court.id      
+      booking.idCourt = eventTmp.court.id
       booking.isRecurrent = eventTmp.isRecurrent;
       booking.observation = eventTmp.observation;
       booking.paymentType = eventTmp.paymentType;
+      booking.price = eventTmp.price;
       return booking;
     }
     return null;
   }
 
-  public saveEvent() {
-    const booking: BookingDTO | null = this.getBooking();
+  public saveEvent(): void {
+    const booking: BookingDTO | null = this.getBooking();    
+
     if(booking) {
+
+      if(booking.price <= 0) {
+        this.notificationService.ErrorNotification(this.translate.instant("Error.PriceMustBeGreaterThanZero"));
+        return;
+      }
+
       this.subscription.add(this.bookingService.create(booking).subscribe({
         next: (data) => {
           this.notificationService.SuccesNotification(this.translate.instant("Booking.BookingCreated"));

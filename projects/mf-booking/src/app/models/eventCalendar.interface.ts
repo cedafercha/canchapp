@@ -15,4 +15,5 @@ export interface EventCalendarDTO {
     dateTimeEnd: Date;
     isRecurrent: boolean;
     observation: string;
+    color: string;
 }

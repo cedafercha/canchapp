@@ -122,6 +122,7 @@
         "BookingPaid":"The reservation has already been paid, it is not possible to delete it.",
         "BookingDateStartMustBeGreater":"The start time must be greater than the end time.",
         "CourtWithRecords":"The court cannot be deleted, there are already associated reservations.",
-        "CourtNotFound":"The court does not exist."
+        "CourtNotFound":"The court does not exist.",
+        "PriceMustBeGreaterThanZero":"The price must be greater than zero."
     }
 }
