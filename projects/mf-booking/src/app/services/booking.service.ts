@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiEnum } from 'commons-lib';
 import { BookingDTO } from '../models/booking.model';
 import { EventCalendarDTO } from '../models/eventCalendar.interface';
+import { ValueCourtDTO } from '../models/valueCourt.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,8 @@ export class BookingService {
     return this.http.put<number>(`${this.apiUrl}UpdatePay`, booking);
   }
 
-  getPrice(day: number, timeBooking: string, idCourt: number,): Observable<number> {
-    return this.http.get<number>(`${this.apiUrl}GetCourtPrice/${day}/${timeBooking}/${idCourt}`);
+  getCourtValue(day: number, timeStart: string, timeEnd: string, idCourt: number,): Observable<ValueCourtDTO> {
+    return this.http.get<ValueCourtDTO>(`${this.apiUrl}GetCourtValue/${day}/${timeStart}/${timeEnd}/${idCourt}`);
   }
 
 }

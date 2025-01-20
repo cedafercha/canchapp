@@ -84,7 +84,9 @@
         "Cash":"Cash",
         "TDebit":"T. Debit",
         "TCredit":"T. Credit",
-        "StartTimeMustBeGreater":"The start time must be greater than the end time."
+        "StartTimeMustBeGreater":"The start time must be greater than the end time.",
+        "TotalValue":"Total value",
+        "HourValue":"Hour value"
     },
     "Court":{
         "Name":"Nombre",
@@ -101,6 +103,9 @@
         "CourtCreated":"Court saved successfully.",
         "CourtDeleted":"Court deleted successfully.",
         "ConfirmDeleteCourt":"Are you sure you want to delete the "
+    },
+    "Metrics":{
+        "SalesToday":"Sales today"
     },
     "Tooltip": {
         "RecurringBooking":"This reservation will remain weekly"

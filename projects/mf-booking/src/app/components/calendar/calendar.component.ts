@@ -246,7 +246,8 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
       booking.isRecurrent = eventTmp.isRecurrent;
       booking.observation = eventTmp.observation;
       booking.paymentType = eventTmp.paymentType;
-      booking.price = eventTmp.price;
+      booking.valueCourt = eventTmp.valueCourt;
+      booking.totalValue = eventTmp.totalValue;
       return booking;
     }
     return null;
@@ -257,7 +258,7 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
 
     if(booking) {
 
-      if(booking.price <= 0) {
+      if(booking.valueCourt <= 0) {
         this.notificationService.ErrorNotification(this.translate.instant("Error.PriceMustBeGreaterThanZero"));
         return;
       }

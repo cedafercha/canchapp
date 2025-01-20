@@ -73,7 +73,9 @@
         "Cash":"Efectivo",
         "TDebit":"T. Debito",
         "TCredit":"T. Credito",
-        "StartTimeMustBeGreater":"La hora de inicio debe ser mayor que la hora de finalización."
+        "StartTimeMustBeGreater":"La hora de inicio debe ser mayor que la hora de finalización.",
+        "TotalValue":"Valor total",
+        "HourValue":"Valor hora"
     },
     "Court":{
         "Name":"Name",
@@ -90,6 +92,9 @@
         "CourtCreated":"Cancha guardada correctamente.",        
         "CourtDeleted":"Cancha eliminada correctamente.",
         "ConfirmDeleteCourt":"¿Está seguro de eliminar la cancha "
+    },
+    "Metrics":{
+        "SalesToday":"Ventas hoy"
     },
     "Login":
     {

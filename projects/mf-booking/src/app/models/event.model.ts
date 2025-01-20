@@ -17,5 +17,8 @@ export class EventDTO {
     timeStart: string = '';
     timeEnd: string = '';
     day: number = 0;
-    price: number = 0;
+    valueCourt: number = 0;
+    totalValue: number = 0;
+    totalHours: number = 0;
+    hours: number = 0;
 }
