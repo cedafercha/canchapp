@@ -47,11 +47,21 @@
 
   <div class="row">
     <div class="col-7">
-      <div>
+      <div class="mb-3">
         <label for="CustomerBooking" class="form-label">{{ 'Booking.CustomerBooking' | translate }}</label>
         <lib-browser formControlName="customer" [browserId]="browserId"></lib-browser>
         <div *ngIf="formEvent.controls['customer']?.invalid && formEvent.controls['customer']?.touched" class="text-danger">
           <small *ngIf="formEvent.controls['customer']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
+        </div>
+      </div>
+      <div class="mb-2">
+        <label for="observation">{{ 'Booking.Comment' | translate }}</label>
+        <textarea formControlName="observation" class="form-control" id="observation" rows="4"> </textarea>
+      </div>
+      <div>
+        <div class="form-check form-switch" title="{{'Tooltip.RecurringBooking' | translate }}">
+          <input formControlName="isRecurrent" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" aria-checked="false" />
+          <label class="form-check-label" for="flexSwitchCheckDefault">{{ 'Booking.IsRecurringBooking' | translate }}</label>
         </div>
       </div>
     </div>
@@ -61,16 +71,19 @@
           <div class="row">
             <div class="col-5">
               <div class="icon-big text-center">
-                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <i class="fa-solid fa-hand-holding-dollar icon-large"></i>
               </div>
             </div>
             <div class="col-7 col-stats">
               <div class="numbers">
-                <p class="card-category">Precio hora</p>
-                <h4 class="card-title">$ {{ this.eventEdit.price | number:'1.0-0' }}</h4>
+                <p class="card-category">{{'Booking.TotalValue' | translate }}</p>
+                <h1>$ {{ this.eventEdit.totalValue | number:'1.0-0' }}</h1>
               </div>
             </div>
           </div>
+        </div>
+        <div class="card-footer">
+          <div>{{'Booking.HourValue' | translate }}: <strong>$ {{ this.eventEdit.valueCourt | number:'1.0-0' }}</strong></div>
         </div>
       </div>
     </div>
@@ -86,17 +99,9 @@
     </select>
   </div>
 
-  <div>
-    <div class="form-check form-switch" title="{{'Tooltip.RecurringBooking' | translate }}">
-      <input formControlName="isRecurrent" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" aria-checked="false" />
-      <label class="form-check-label" for="flexSwitchCheckDefault">{{ 'Booking.IsRecurringBooking' | translate }}</label>
-    </div>
-  </div>
 
-  <div class="mb-2">
-    <label for="observation">{{ 'Booking.Comment' | translate }}</label>
-    <textarea formControlName="observation" class="form-control" id="observation" rows="4"> </textarea>
-  </div>
+
+
 
 </form>
 

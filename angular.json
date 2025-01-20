@@ -134,117 +134,6 @@
 				}
 			}
 		},
-		"mf-dashboard": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss",
-					"standalone": false
-				},
-				"@schematics/angular:directive": {
-					"standalone": false
-				},
-				"@schematics/angular:pipe": {
-					"standalone": false
-				}
-			},
-			"root": "projects/mf-dashboard",
-			"sourceRoot": "projects/mf-dashboard/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/mf-dashboard",
-						"index": "projects/mf-dashboard/src/index.html",
-						"polyfills": [
-							"zone.js"
-						],
-						"tsConfig": "projects/mf-dashboard/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/mf-dashboard/src/favicon.ico",
-							"projects/mf-dashboard/src/assets"
-						],
-						"styles": [
-							"projects/mf-dashboard/src/styles.scss"
-						],
-						"scripts": [],
-						"main": "projects/mf-dashboard/src/main.ts",
-						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "2kb",
-									"maximumError": "4kb"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/mf-dashboard/webpack.prod.config.js"
-						},
-						"development": {
-							"optimization": false,
-							"extractLicenses": false,
-							"sourceMap": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"buildTarget": "mf-dashboard:build:production",
-							"extraWebpackConfig": "projects/mf-dashboard/webpack.prod.config.js"
-						},
-						"development": {
-							"buildTarget": "mf-dashboard:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 4202,
-						"publicHost": "http://localhost:4202",
-						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"buildTarget": "mf-dashboard:build",
-						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"polyfills": [
-							"zone.js",
-							"zone.js/testing"
-						],
-						"tsConfig": "projects/mf-dashboard/tsconfig.spec.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/mf-dashboard/src/favicon.ico",
-							"projects/mf-dashboard/src/assets"
-						],
-						"styles": [
-							"projects/mf-dashboard/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
 		"mf-company": {
 			"projectType": "application",
 			"root": "projects/mf-company",
@@ -798,6 +687,105 @@
 						],
 						"styles": [
 							"projects/mf-user/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"mf-dashboard": {
+			"projectType": "application",
+			"root": "projects/mf-dashboard",
+			"sourceRoot": "projects/mf-dashboard/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/mf-dashboard",
+						"index": "projects/mf-dashboard/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/mf-dashboard/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/mf-dashboard/src/favicon.ico",
+							"projects/mf-dashboard/src/assets"
+						],
+						"styles": [
+							"projects/mf-dashboard/src/styles.scss"
+						],
+						"scripts": [],
+						"main": "projects/mf-dashboard/src/main.ts",
+						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mf-dashboard/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "mf-dashboard:build:production",
+							"extraWebpackConfig": "projects/mf-dashboard/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "mf-dashboard:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4202,
+						"publicHost": "http://localhost:4202",
+						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"buildTarget": "mf-dashboard:build",
+						"extraWebpackConfig": "projects/mf-dashboard/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/mf-dashboard/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/mf-dashboard/src/favicon.ico",
+							"projects/mf-dashboard/src/assets"
+						],
+						"styles": [
+							"projects/mf-dashboard/src/styles.scss"
 						],
 						"scripts": []
 					}

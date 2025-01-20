@@ -34,7 +34,7 @@ export class AuthService {
     // Redirige al multilogin si el token es provisional
     isProvisionalToken
       ? this.router.navigate(['/multilogin'])
-      : this.router.navigate(['/company']);
+      : this.router.navigate(['/dashboard']);
   }
 
   logout(): void {

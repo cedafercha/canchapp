@@ -41,15 +41,15 @@ const routes: Routes = [
           .then(m => m.UserModule)    
       },
       { 
-        path: 'board',
+        path: 'dashboard',
         canActivate: [authGuard],
         loadChildren: () => 
           loadRemoteModule({
             type: 'module',
             remoteEntry: 'http://localhost:4202/remoteEntry.js',
-            exposedModule: './BoardModule'
+            exposedModule: './DashboardModule'
           })
-          .then(m => m.BoardModule)        
+          .then(m => m.DashboardModule)        
       },
       { 
         path: 'company',

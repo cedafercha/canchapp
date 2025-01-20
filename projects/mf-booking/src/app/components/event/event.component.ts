@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ActionEnum, BrowserComponent, BrowserIdEnum, CommonsLibService, SelectIdEnum } from 'commons-lib';
 import { EventDTO } from '../../models/event.model';
 import { Subscription } from 'rxjs';
 import { BookingService } from '../../services/booking.service';
+import { ValueCourtDTO } from '../../models/valueCourt.interface';
 
 @Component({
   selector: 'app-event',
@@ -48,7 +49,8 @@ export class EventComponent implements OnInit, OnChanges {
       isRecurrent: [false],
       observation: [''],
       paymentType: ['0'],
-      price: ['0']	
+      valueCourt: ['0'],
+      totalValue: ['0']
     });
   }
 
@@ -110,13 +112,20 @@ export class EventComponent implements OnInit, OnChanges {
   }
 
   getPrice(): void {
-    const timeBooking = this.commonsLibService.getTime(this.eventEdit.dateTimeStart);
-    this.subscription.add(this.bookingService.getPrice(this.eventEdit.day, timeBooking, this.eventEdit.court.id).subscribe({
-      next: (data: number) => {
-        this.eventEdit.price = data;
-        this.formEvent.controls['price'].setValue(data);
+    const timeStart = this.commonsLibService.getTime(this.eventEdit.dateTimeStart);
+    const timeEnd = this.commonsLibService.getTime(this.eventEdit.dateTimeEnd);
+
+    this.subscription.add(this.bookingService.getCourtValue(this.eventEdit.day, timeStart, timeEnd, this.eventEdit.court.id).subscribe({
+      next: (data: ValueCourtDTO) => {
+        this.eventEdit.valueCourt = data.value;
+        this.eventEdit.totalValue = data.totalValue;
+        this.eventEdit.totalHours = data.totalHours;
+        this.eventEdit.hours = data.hours;
+        this.formEvent.controls['valueCourt'].setValue(data.value);
+        this.formEvent.controls['totalValue'].setValue(data.totalValue);
       },
       error: (error) => {
+        console.error(error);
       }
     }));
   }
