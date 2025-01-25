@@ -26,4 +26,9 @@ export class CommonsLibService {
     const minutes = _date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}:00`;
   }
+
+  getMonthText(numberMonth: number) {
+    const monthText = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return monthText[numberMonth];
+  }
 }

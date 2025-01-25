@@ -9,7 +9,19 @@
         "Action":"Actions",
         "State":"State",
         "Active":"Active",
-        "Inactive":"Inactive"
+        "Inactive":"Inactive",
+        "January":"January", 
+        "February":"February", 
+        "March":"March", 
+        "April":"April", 
+        "May":"May", 
+        "June":"June", 
+        "July":"July",
+        "August":"August", 
+        "September":"September", 
+        "October":"October", 
+        "November":"November", 
+        "December":"December"
     },
     "Title":
     {
@@ -104,8 +116,12 @@
         "CourtDeleted":"Court deleted successfully.",
         "ConfirmDeleteCourt":"Are you sure you want to delete the "
     },
+    "Reports":{
+        
+    },
     "Metrics":{
-        "SalesToday":"Sales today"
+        "SalesToday":"Sales today",
+        "ReportTotalValuePerMonthAnnually": "Monthly sales"
     },
     "Tooltip": {
         "RecurringBooking":"This reservation will remain weekly"
