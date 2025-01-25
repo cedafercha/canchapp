@@ -1,11 +1,13 @@
 export enum ApiEnum {
+    Report = 'http://localhost:5195/api/Report/',
+    DashBoard = 'http://localhost:5195/api/DashBoard/',
     Booking = 'http://localhost:5196/api/Booking/',
     Security = 'http://localhost:5197/api/Security/',
     Company = 'http://localhost:5198/api/Company/',
     Browser = 'http://localhost:5199/api/Browser/',  
     Select = 'http://localhost:5199/api/Select/',
     HoliDay = 'http://localhost:5199/api/HoliDay/',
-    Court = 'http://localhost:5199/api/Court/',
+    Court = 'http://localhost:5199/api/Court/',    
 }
 export enum NotificationTypeEnum {
 	Succes = 'success',

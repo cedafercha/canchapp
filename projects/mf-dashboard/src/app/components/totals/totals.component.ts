@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { TotalsService } from '../../services/totals.services';
 import { Subscription } from 'rxjs';
 import { TotalsDTO } from '../../models/totals.interface';
 import { CommonModule } from '@angular/common';
+import { DashBoardService } from '../../services/dashboard.service.service';
 
 @Component({
   selector: 'app-totals',
@@ -19,8 +19,8 @@ export class TotalsComponent implements OnInit {
   TotalNumberBooking: number = 0;
 
   constructor(
-      public translate: TranslateService,
-      public readonly totalsService: TotalsService ) {
+      private readonly dashBoardService: DashBoardService,
+      public translate: TranslateService ) {
         
   }
 
@@ -30,7 +30,7 @@ export class TotalsComponent implements OnInit {
     const month = new Date().getMonth() + 1;
     const day = new Date().getDate();
 
-    this.subscription.add(this.totalsService.getTotals(year, month, day).subscribe({
+    this.subscription.add(this.dashBoardService.getTotals(year, month, day).subscribe({
       next: (data: TotalsDTO) => {
         this.TotalValueBooking = data.totalValueBooking;
         this.TotalNumberBooking = data.totalNumberBooking;
