@@ -49,7 +49,7 @@
     <div class="col-7">
       <div class="mb-3">
         <label for="CustomerBooking" class="form-label">{{ 'Booking.CustomerBooking' | translate }}</label>
-        <lib-browser formControlName="customer" [browserId]="browserId"></lib-browser>
+        <lib-browser formControlName="customer" [browserId]="browserId" [addItem]="true" (onItemSelected)="clicItemSelected($event)"></lib-browser>
         <div *ngIf="formEvent.controls['customer']?.invalid && formEvent.controls['customer']?.touched" class="text-danger">
           <small *ngIf="formEvent.controls['customer']?.errors?.['required']">{{ 'Validations.FieldRequired' | translate }}</small>
         </div>
@@ -98,12 +98,9 @@
       <option value="3">{{ 'Booking.TCredit' | translate }}</option>
     </select>
   </div>
-
-
-
-
-
 </form>
+
+
 
 
 

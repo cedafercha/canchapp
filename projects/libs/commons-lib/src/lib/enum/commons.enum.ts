@@ -1,4 +1,5 @@
 export enum ApiEnum {
+    Customer = 'http://localhost:5194/api/Customer/',
     Report = 'http://localhost:5195/api/Report/',
     DashBoard = 'http://localhost:5195/api/DashBoard/',
     Booking = 'http://localhost:5196/api/Booking/',

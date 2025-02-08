@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ActionEnum, BrowserComponent, BrowserIdEnum, CommonsLibService, SelectIdEnum } from 'commons-lib';
@@ -7,6 +7,7 @@ import { EventDTO } from '../../models/event.model';
 import { Subscription } from 'rxjs';
 import { BookingService } from '../../services/booking.service';
 import { ValueCourtDTO } from '../../models/valueCourt.interface';
+import { CustomerQuickDTO } from '../../models/customerQuick.interface';
 
 @Component({
   selector: 'app-event',
@@ -17,15 +18,16 @@ import { ValueCourtDTO } from '../../models/valueCourt.interface';
 })
 
 export class EventComponent implements OnInit, OnChanges {
-
+  
   private readonly subscription: Subscription = new Subscription();
   public formEvent: FormGroup = new FormGroup({});
   msgSave: string = '';
   browserId: BrowserIdEnum;
   selectId: SelectIdEnum;
-  eventEdit: EventDTO = new EventDTO();
+  eventEdit: EventDTO = new EventDTO();  
 
   @Input() actionState: ActionEnum = ActionEnum.None;
+  @Output() onAddCustomer = new EventEmitter<boolean>();
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -128,6 +130,14 @@ export class EventComponent implements OnInit, OnChanges {
         console.error(error);
       }
     }));
+  }
+
+  clicItemSelected(item: any) {
+    this.onAddCustomer.emit(true);
+  }
+
+  setCustomer(customer: CustomerQuickDTO): void {
+    this.formEvent.controls['customer'].setValue({ id: customer.idCustomer, text: customer.name, args: customer });
   }
 
   ngOnDestroy(): void {

@@ -18,26 +18,31 @@ import { CustomerDTO } from '../../models/customer.model';
 import { CourtDTO } from '../../models/court.model';
 import { CommonModule } from '@angular/common';
 import { EventImpl } from '@fullcalendar/core/internal';
+import { NewCustomerComponent } from "../new-customer/new-customer.component";
+import { CustomerQuickDTO } from '../../models/customerQuick.interface';
 
 declare let bootstrap: any;
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [TranslateModule, FullCalendarModule, EventComponent, SelectComponent, CommonModule],
+  imports: [TranslateModule, FullCalendarModule, EventComponent, SelectComponent, CommonModule, NewCustomerComponent],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
 })
 export class CalendarComponent implements OnInit, AfterViewInit  {
 
+  @ViewChild('calendar') calendar!: FullCalendarComponent;
   @ViewChild('appEvent', { static: true}) eventComponent!: EventComponent;
+  @ViewChild('appNewCustomer', { static: true}) newCustomerComponent!: NewCustomerComponent;
   @ViewChild('eventModal', { static: true}) modalElement!: ElementRef;
   @ViewChild('eventConfirmModal', { static: true}) modalConfirmElement!: ElementRef;
-  @ViewChild('calendar') calendar!: FullCalendarComponent;
+  @ViewChild('eventAddCustomerModal', { static: true}) modalAddCustomer!: ElementRef;  
 
   private readonly subscription: Subscription = new Subscription();
   eventModal: any;
   eventConfirmModal: any;
+  eventAddCustomerModal: any;
   dateTimeStart?: string;
   dateTimeEnd?: string;
   titleModal: string;
@@ -104,6 +109,7 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
   ngAfterViewInit(): void {
     this.eventModal = new bootstrap.Modal(this.modalElement.nativeElement);
     this.eventConfirmModal = new bootstrap.Modal(this.modalConfirmElement.nativeElement);
+    this.eventAddCustomerModal = new bootstrap.Modal(this.modalAddCustomer.nativeElement);
 
     this.modalElement.nativeElement.addEventListener('hidden.bs.modal', () => {
       this.actionState = ActionEnum.None;
@@ -328,6 +334,47 @@ export class CalendarComponent implements OnInit, AfterViewInit  {
           this.actionState = ActionEnum.None;
           this.loadEvents(-1);
           this.eventModal.hide();
+        },
+        error: (error) => {
+          // Manejo de errores con switch según el código del backend
+          if (error.error?.code) {
+            switch (error.error.code) {
+              case CodeErrorEnum.BookingNotAvailable:
+                this.notificationService.ErrorNotification(this.translate.instant("Error.BookingNotAvailable"));
+                break;
+              case CodeErrorEnum.BookingNotFound:
+                this.notificationService.ErrorNotification(this.translate.instant("Error.BookingNotFound"));
+                break;
+              case CodeErrorEnum.BookingPaid:
+                this.notificationService.ErrorNotification(this.translate.instant("Error.BookingPaid"));
+                break;
+  
+              default:
+                console.error('Error no manejado:', error.error.code);
+            }
+          } else {
+            console.error('Error sin código específico:', error.message);
+          }
+        }
+      }));
+    }
+  }
+
+  onAddCustomer(): void {
+    this.eventModal.hide();
+    this.eventAddCustomerModal.show();
+  }
+
+  saveCustomer(): void {
+    const customer : CustomerQuickDTO | null = this.newCustomerComponent.getCustomer();
+    if(customer) {
+      this.subscription.add(this.bookingService.createCustomer(customer).subscribe({
+        next: (data) => {
+          this.notificationService.SuccesNotification(this.translate.instant("Booking.CustomerCreated"));
+          this.actionState = ActionEnum.Create;
+          this.eventAddCustomerModal.hide();
+          this.eventComponent.setCustomer(data);
+          this.eventModal.show();
         },
         error: (error) => {
           // Manejo de errores con switch según el código del backend

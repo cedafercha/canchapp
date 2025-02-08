@@ -18,7 +18,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <app-event [actionState]="actionState" #appEvent></app-event>
+        <app-event [actionState]="actionState" (onAddCustomer)="onAddCustomer()" #appEvent></app-event>
       </div>
       <div class="modal-footer">
         <button *ngIf="actionState == 1" type="button" class="btn btn-success" (click)="saveEvent()">{{ 'Button.Save' | translate }}</button>
@@ -43,6 +43,24 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="deleteEvent()">{{ 'Button.Yes' | translate }}</button> 
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ 'Button.No' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal nuevo cliente -->
+<div class="modal" tabindex="-1" role="dialog" #eventAddCustomerModal>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'Booking.NewCustomer' | translate }}</h5>
+      </div>
+      <div class="modal-body">
+        <app-new-customer #appNewCustomer></app-new-customer>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="saveCustomer()">{{ 'Button.Save' | translate }}</button> 
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ 'Button.Cancel' | translate }}</button>
       </div>
     </div>
   </div>

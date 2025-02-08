@@ -1,4 +1,17 @@
-.list-group {
-    max-height: 200px;
-    overflow-y: auto;
-  }
+.position-relative {
+  position: relative;
+}
+
+.items-dropdown {
+  width: 100%; /* Asegura que tenga el mismo ancho que el contenedor del input */
+  z-index: 1000; /* Mantén la lista por encima de otros elementos */
+  max-height: 200px; /* Opcional: establece una altura máxima para evitar que crezca demasiado */
+  overflow-y: auto; /* Permite desplazamiento si hay muchos ítems */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para diferenciar la lista */
+  cursor: pointer;
+}
+
+.addItem {
+  color: #48abf7;
+  text-decoration: underline;
+}

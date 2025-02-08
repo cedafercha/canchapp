@@ -68,6 +68,7 @@
         "EnterEmail":"Ingrese el correo electrónico"
     },
     "Booking":{
+        "CustomerCreated":"Cliente guardado correctamente.",
         "CustomerBooking":"Cliente de la reserva",
         "Comment":"Comentarios",
         "DateTimeReservation":"Fecha y hora de reserva",
@@ -87,7 +88,10 @@
         "TCredit":"T. Credito",
         "StartTimeMustBeGreater":"La hora de inicio debe ser mayor que la hora de finalización.",
         "TotalValue":"Valor total",
-        "HourValue":"Valor hora"
+        "HourValue":"Valor hora",
+        "NewCustomer":"Nuevo cliente",
+        "NameCustomer":"Nombre",
+        "PhoneCustomer":"Número de contacto"
     },
     "Court":{
         "Name":"Name",
