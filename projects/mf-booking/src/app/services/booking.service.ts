@@ -5,6 +5,7 @@ import { ApiEnum } from 'commons-lib';
 import { BookingDTO } from '../models/booking.model';
 import { EventCalendarDTO } from '../models/eventCalendar.interface';
 import { ValueCourtDTO } from '../models/valueCourt.interface';
+import { CustomerQuickDTO } from '../models/customerQuick.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { ValueCourtDTO } from '../models/valueCourt.interface';
 export class BookingService {
 
   apiUrl: string = ApiEnum.Booking;
+  apiUrlCustomer: string = ApiEnum.Customer;
 
   constructor(private readonly http: HttpClient) {
   }
@@ -19,6 +21,10 @@ export class BookingService {
   create(booking: BookingDTO): Observable<BookingDTO> {
       return this.http.post<BookingDTO>(`${this.apiUrl}Create`, booking);
   }
+
+  createCustomer(customer: CustomerQuickDTO): Observable<CustomerQuickDTO> {
+    return this.http.post<CustomerQuickDTO>(`${this.apiUrlCustomer}QuickCreate`, customer);
+}
 
   getEvents(idCourt: number): Observable<EventCalendarDTO[]> {
     return this.http.get<EventCalendarDTO[]>(`${this.apiUrl}GetEvents/${idCourt}`);

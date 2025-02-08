@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ApiEnum, BrowserIdEnum } from '../../enum/commons.enum';
@@ -25,6 +25,9 @@ export class BrowserComponent implements ControlValueAccessor {
 
   @Input() browserId!: BrowserIdEnum;
   @Input() placeHolder: string = 'Browser.LookFor';
+  @Input() addItem: boolean = false;
+
+  @Output() onItemSelected = new EventEmitter<{ text: string, id: string, args?: string }>(); // Evento para emitir el ítem seleccionado
 
   public items: { text: string, id: string, args?: string }[] = [];
   public selectedItem: any = null;
@@ -55,8 +58,11 @@ export class BrowserComponent implements ControlValueAccessor {
         })
       ))
     )
-    .subscribe((response) => {
+    .subscribe((response: { text: string, id: string, args?: string }[]) => {
       this.error = null; // Limpia el error en caso de éxito
+      if(response.length == 0 && this.addItem)
+        response.push({ text: 'Agregar item', id: '-1', args: 'addItem' });
+
       this.items = response;
     });
   }
@@ -99,6 +105,11 @@ export class BrowserComponent implements ControlValueAccessor {
 
   // Función para manejar la selección de un item
   onSelectItem(item: { text: string, id: string, args?: string }): void {
+    if(item.id == '-1' && this.addItem) {
+      this.items = []; // Limpia las sugerencias
+      this.onItemSelected.emit(item); // Emitir el ítem seleccionado
+      return;
+    }
     this.selectedItem = item;
     this.value = item; // Establece el valor seleccionado
     this.onChangeFn(item); // Notifica al formulario

@@ -79,6 +79,7 @@
         "EnterEmail":"Enter the email"
     },
     "Booking":{
+        "CustomerCreated":"Customer saved successfully.",
         "CustomerBooking":"Reservation client",
         "Comment":"Comment",
         "DateTimeReservation":"Date and time of reservation",
@@ -98,7 +99,10 @@
         "TCredit":"T. Credit",
         "StartTimeMustBeGreater":"The start time must be greater than the end time.",
         "TotalValue":"Total value",
-        "HourValue":"Hour value"
+        "HourValue":"Hour value",
+        "NewCustomer":"New customer",
+        "NameCustomer":"Name",
+        "PhoneCustomer":"Contact number"
     },
     "Court":{
         "Name":"Nombre",
