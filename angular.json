@@ -25,6 +25,7 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mf-host",
+						"baseHref": "/mf-host/",
 						"index": "projects/mf-host/src/index.html",
 						"polyfills": [
 							"zone.js"
@@ -144,6 +145,7 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mf-company",
+						"baseHref": "/mf-company/",
 						"index": "projects/mf-company/src/index.html",
 						"polyfills": [
 							"zone.js"
@@ -307,6 +309,7 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mf-booking",
+						"baseHref": "/mf-booking/",
 						"index": "projects/mf-booking/src/index.html",
 						"polyfills": [
 							"zone.js"
@@ -406,6 +409,7 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mf-catalog",
+						"baseHref": "/mf-catalog/",
 						"index": "projects/mf-catalog/src/index.html",
 						"polyfills": [
 							"zone.js"
@@ -505,6 +509,7 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mf-report",
+						"baseHref": "/mf-report/",
 						"index": "projects/mf-report/src/index.html",
 						"polyfills": [
 							"zone.js"
@@ -604,6 +609,7 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mf-user",
+						"baseHref": "/mf-user/",
 						"index": "projects/mf-user/src/index.html",
 						"polyfills": [
 							"zone.js"
@@ -703,6 +709,7 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/mf-dashboard",
+						"baseHref": "/mf-dashboard/",
 						"index": "projects/mf-dashboard/src/index.html",
 						"polyfills": [
 							"zone.js"
