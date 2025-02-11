@@ -1,0 +1,154 @@
+{
+    "Commons":
+    {
+        "Email":"Correo",
+        "Password":"Contraseña",
+        "MessageErrorNoti":"Al parecer hubo un error, intente mas tarde por favor.",
+        "MessageSuccessSaveNoti":"Guardado con exito.",
+        "MessageSuccessRemoveNoti":"Eliminado con exito.",
+        "ElementsNotFound":"No se encontraron elementos.",
+        "Action":"Acciones",
+        "State":"Estado",
+        "Active":"Activo",
+        "Inactive":"Inactivo",
+        "January":"Enero", 
+        "February":"Febrero", 
+        "March":"Marzo", 
+        "April":"Abril", 
+        "May":"Mayo", 
+        "June":"Junio", 
+        "July":"Julio",
+        "August":"Agosto", 
+        "September":"Septiembre", 
+        "October":"Octubre", 
+        "November":"Noviembre", 
+        "December":"Diciembre"
+    },
+    "Title":
+    {
+        "Company":"Empresa",
+        "Role":"Rol",
+        "AdminRole":"Administrador",
+        "Courts":"Canchas",
+        "Users":"Usuarios",
+        "Holidays":"Dias festivos"
+    },
+    "Browser":
+    {
+        "LookFor":"Buscar",
+        "SearchForCustomer":"Buscar cliente"        
+    },
+    "Select":
+    {
+        "SelectOption":"Selecciona una opción",
+        "SelectCustomer":"Selecciona cancha"        
+    },
+    "Button":
+    {
+        "Save":"Guardar",
+        "Edit":"Editar",
+        "Detail":"Detalle",
+        "Delete":"Eliminar",
+        "Cancel":"Cancelar",
+        "Pay":"Pago",
+        "Yes":"Si",
+        "No":"No"
+    },
+    "Company":{
+        "Name":"Nombre de la Compañía",
+        "Direction":"Dirección",
+        "Email":"Correo Electrónico",
+        "Phones":"Teléfonos",
+        "AllowedUsers":"Usuarios permitidos",
+        "AllowedCourt":"Canchas permitidas",
+        "EnterName":"Ingrese el nombre de la compañía",
+        "EnterDirection":"Ingrese la dirección",
+        "EnterPhones":"Ingrese los teléfonos",
+        "EnterPhone":"Ingrese el teléfono",
+        "EnterEmail":"Ingrese el correo electrónico"
+    },
+    "Booking":{
+        "CustomerCreated":"Cliente guardado correctamente.",
+        "CustomerBooking":"Cliente de la reserva",
+        "Comment":"Comentarios",
+        "DateTimeReservation":"Fecha y hora de reserva",
+        "DateTimeReservationNew":"Nueva fecha y hora de reserva",
+        "IsRecurringBooking":"¿Reserva recurrente?",
+        "BookingCreated":"Reserva guardada correctamente.",
+        "BookingDeleted":"Reserva eliminada correctamente.",
+        "BookingPaid":"Pago de reserva actualizado.",
+        "TitleModalNew":"Nueva reserva",
+        "TitleModalEdit":"Edición reserva",
+        "TitleModalDetail":"Detalle reserva",
+        "TitleModalPayBooking":"Pago de reserva",
+        "ConfirmDeleteBooking":"¿Está seguro de eliminar esta reserva?",
+        "PaymentType":"Forma de pago",
+        "Cash":"Efectivo",
+        "TDebit":"T. Debito",
+        "TCredit":"T. Credito",
+        "StartTimeMustBeGreater":"La hora de inicio debe ser mayor que la hora de finalización.",
+        "TotalValue":"Valor total",
+        "HourValue":"Valor hora",
+        "NewCustomer":"Nuevo cliente",
+        "NameCustomer":"Nombre",
+        "PhoneCustomer":"Número de contacto"
+    },
+    "Court":{
+        "Name":"Name",
+        "Description":"Descripción",
+        "CourtList":"Lista de canchas",
+        "Court":"Cancha",
+        "EventColor":"Color de evento",
+        "NewCourt":"Nueva cancha",
+        "EditCourt":"Edición cancha",
+        "DetailCourt":"Detalle cancha",
+        "DeleteCourt":"Eliminar cancha",
+        "PricePerHour":"Precio por hora",
+        "Price":"Precio",
+        "CourtCreated":"Cancha guardada correctamente.",        
+        "CourtDeleted":"Cancha eliminada correctamente.",
+        "ConfirmDeleteCourt":"¿Está seguro de eliminar la cancha "
+    },
+    "Reports":{
+        
+    },
+    "Metrics":{
+        "SalesToday":"Ventas hoy",
+        "ReportTotalValuePerMonthAnnually": "Ventas mensuales"
+    },
+    "Login":
+    {
+        "WelcomeCanchapp":"Bienvenido a Canchapp",
+        "MultiloginWelcome":"Selecciona una empresa para iniciar sesión",
+        "SignInContinue":"Inicie sesión en su cuenta para continuar",
+        "ForgotPassword": "¿Has olvidado tu contraseña?",
+        "EnterPassword": "Ingresa tu contraseña",
+        "EnterEmail":"Ingresa tu correo",
+        "RememberUser":"Recuérdame la próxima vez",
+        "SignIn":"Iniciar sesión",
+        "Logout":"Cerrar sesión"
+    },
+    "Tooltip": {
+        "RecurringBooking":"Esta reserva quedara semanal"
+    },
+    "Validations":
+    {
+        "FieldRequired": "Campo requerido.",
+        "FieldOnlyNumber": "Solo números.",
+        "FieldMax80": "Maximo 80 caracteres.",
+        "FieldMax50": "Maximo 50 caracteres.",
+        "FieldInvalidName": "Correo invalido.",
+        "FieldMinLength6":"Al menos 6 caractres.",
+        "FieldOnlyNumberMinLength6":"Solo números y al menos 6 caracteres."
+    },
+    "Error":
+    {
+        "BookingNotAvailable":"La reserva no está disponible.",
+        "BookingNotFound":"La reserva no existe.",
+        "BookingPaid":"La reserva ya ha sido pagada, no es posible eliminarla.",
+        "BookingDateStartMustBeGreater":"La hora inicio debe ser mayor que la hora finalización.",
+        "CourtWithRecords":"La cancha no se puede eliminar, ya existen reservas asociadas.",
+        "CourtNotFound":"La cancha no existe.",
+        "PriceMustBeGreaterThanZero":"El precio debe ser mayor a cero."
+    }
+}
