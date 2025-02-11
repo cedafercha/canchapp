@@ -1,0 +1,153 @@
+{
+    "Commons":
+    {
+        "Email":"Email",
+        "Password":"Password",
+        "MessageSuccessSaveNoti":"Successfully saved.",
+        "MessageSuccessRemoveNoti":"Successfully removed.",
+        "ElementsNotFound":"Elements not found.",
+        "Action":"Actions",
+        "State":"State",
+        "Active":"Active",
+        "Inactive":"Inactive",
+        "January":"January", 
+        "February":"February", 
+        "March":"March", 
+        "April":"April", 
+        "May":"May", 
+        "June":"June", 
+        "July":"July",
+        "August":"August", 
+        "September":"September", 
+        "October":"October", 
+        "November":"November", 
+        "December":"December"
+    },
+    "Title":
+    {
+        "Company":"Company",
+        "Role":"Role",
+        "AdminRole":"Administrator",
+        "Courts":"Courts",
+        "Users":"Users",
+        "Holidays":"Holidays"
+    },
+    "Browser":
+    {
+        "LookFor":"Look for",
+        "SearchForCustomer":"Search for client"        
+    },
+    "Select":
+    {
+        "SelectOption":"Select option",
+        "SelectCustomer":"Selecciona court"        
+    },
+    "Button":
+    {
+        "Save":"Save",
+        "Edit":"Edit",
+        "Detail":"Detail",
+        "Delete":"Delete",
+        "Cancel":"Cancel",
+        "Pay":"Pay",
+        "Yes":"Yes",
+        "No":"No"
+    },
+    "Login":
+    {
+        "WelcomeCanchapp": "Welcome Canchapp",
+        "MultiloginWelcome":"Select the company to log in",
+        "SignInContinue": "Sign in to your account to continue",
+        "ForgotPassword": "Forgot password?",
+        "EnterPassword": "Enter your password",
+        "EnterEmail":"Enter your email",
+        "RememberUser":"Remember me next time",
+        "SignIn":"Sign in",
+        "Logout":"Log out"
+    },
+    "Company":{
+        "Name":"Company Name",
+        "Direction":"Address",
+        "Email":"Email",
+        "Phones":"Phones",
+        "AllowedUsers":"Allowed Users",
+        "AllowedCourt":"Allowed Courts",
+        "EnterName":"Enter the company name",
+        "EnterDirection":"Enter the address",
+        "EnterPhones":"Enter the phones",
+        "EnterPhone":"Enter phone",
+        "EnterEmail":"Enter the email"
+    },
+    "Booking":{
+        "CustomerCreated":"Customer saved successfully.",
+        "CustomerBooking":"Reservation client",
+        "Comment":"Comment",
+        "DateTimeReservation":"Date and time of reservation",
+        "DateTimeReservationNew":"New date and time of reservation",
+        "IsRecurringBooking":"Recurring booking?",
+        "BookingCreated":"Reservation saved successfully.",
+        "BookingDeleted":"Reservation deleted successfully.",
+        "BookingPaid":"Reservation payment updated.",
+        "TitleModalNew":"New booking",
+        "TitleModalEdit":"Edit booking",
+        "TitleModalDetail":"Detail booking",
+        "TitleModalPayBooking":"Reservation payment",
+        "ConfirmDeleteBooking":"Are you sure you want to delete this reservation?",
+        "PaymentType":"Payment type",
+        "Cash":"Cash",
+        "TDebit":"T. Debit",
+        "TCredit":"T. Credit",
+        "StartTimeMustBeGreater":"The start time must be greater than the end time.",
+        "TotalValue":"Total value",
+        "HourValue":"Hour value",
+        "NewCustomer":"New customer",
+        "NameCustomer":"Name",
+        "PhoneCustomer":"Contact number"
+    },
+    "Court":{
+        "Name":"Nombre",
+        "Description":"Description",
+        "CourtList":"List of courts",
+        "Court":"Court",
+        "EventColor":"Event color",
+        "NewCourt":"New court",
+        "EditCourt":"Edición cancha",
+        "DetailCourt":"Detalle cancha",
+        "DeleteCourt":"Delete court",
+        "PricePerHour":"Price per hour",
+        "Price":"Price",
+        "CourtCreated":"Court saved successfully.",
+        "CourtDeleted":"Court deleted successfully.",
+        "ConfirmDeleteCourt":"Are you sure you want to delete the "
+    },
+    "Reports":{
+        
+    },
+    "Metrics":{
+        "SalesToday":"Sales today",
+        "ReportTotalValuePerMonthAnnually": "Monthly sales"
+    },
+    "Tooltip": {
+        "RecurringBooking":"This reservation will remain weekly"
+    },
+    "Validations":
+    {
+        "FieldRequired": "Required field.",
+        "FieldOnlyNumber": "Just numbers.",
+        "FieldMax80": "Maximum 80 characters.",
+        "FieldMax50": "Maximum 50 characters.",
+        "FieldInvalidName": "Invalid email.",
+        "FieldMinLength6":"At least 6 characters.",
+        "FieldOnlyNumberMinLength6":"Numbers only and at least 6 characters."
+    },
+    "Error":
+    {
+        "BookingNotAvailable":"The reservation is not available.",
+        "BookingNotFound":"The reservation does not exist.",
+        "BookingPaid":"The reservation has already been paid, it is not possible to delete it.",
+        "BookingDateStartMustBeGreater":"The start time must be greater than the end time.",
+        "CourtWithRecords":"The court cannot be deleted, there are already associated reservations.",
+        "CourtNotFound":"The court does not exist.",
+        "PriceMustBeGreaterThanZero":"The price must be greater than zero."
+    }
+}
