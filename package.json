@@ -12,7 +12,14 @@
     "serve:ssr:mf-dashboard": "node dist/mf-dashboard/server/server.mjs",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
     "serve:ssr:mf-company": "node dist/mf-company/server/server.mjs",
-    "build-libs": "ng build auth-lib && ng build commons-lib"
+    "build-libs": "ng build auth-lib && ng build commons-lib",
+    "build-prod-host":"ng build mf-host --configuration production",
+    "build-prod-booking":"ng build mf-booking --configuration production",
+    "build-prod-catalog":"ng build mf-catalog --configuration production",
+    "build-prod-dashboard":"ng build mf-dashboard --configuration production",
+    "build-prod-report":"ng build mf-report --configuration production",
+    "build-prod-user":"ng build mf-user --configuration production",
+    "build-prod-all":"npm run build-libs && npm run build-prod-host && npm run build-prod-booking && npm run build-prod-catalog && npm run build-prod-dashboard && npm run build-prod-report && npm run build-prod-user"
   },
   "private": true,
   "dependencies": {
